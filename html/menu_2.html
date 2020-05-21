@@ -1,0 +1,51 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+@import url('../css/board.css');
+.menutab{padding-bottom:55px}
+.menutab li{margin-left:45px}
+.menutab li:first-child{margin-left:0}
+.menutab li a{position:relative;display:inline-block;padding:3px 7px;font-family:'Arita-buriSB';font-size:25px;letter-spacing:-0.05em;color:#2d2925}
+.menutab li a:before{content:'';position:absolute;left:0;bottom:0;width:0;height:4px;background-color:#d4b66c}
+.menutab li.on a:before, .menutab li a:hover:before{width:100%}
+.grid_list li{margin-left:60px;margin-bottom:50px}
+.grid_list li:nth-child(3n-2){margin-left:0}
+.grid_img_area{width:360px;height:200px;background-repeat:no-repeat;background-position:center;background-size:cover}
+.grid_txt_area{width:360px;height:55px;border:1px solid rgba(0,0,0,0.2);font-family:'NotoSansKR-Regular';font-size:20px;color:#202020;line-height:53px;text-align:center;box-sizing:border-box}
+</style>
+        <!-- menutab start -->
+        <ul class="menutab fs_def t_center">
+            <li class="on"><a href="#none">ALL</a></li>
+            <li><a href="#none">세트메뉴</a></li>
+            <li><a href="#none">스페셜메뉴</a></li>
+            <li><a href="#none">후레쉬메뉴</a></li>
+        </ul>
+        <!-- //menutab end -->
+        <!-- menu_cont start -->
+        <div class="menu_cont">
+            <div id="boardWrap" class="board_wrap">
+                <ul class="grid_list fs_def">
+                    <li>
+                        <div class="grid_img_area" style="background-image:url('../img/page/menu/02/sample.jpg')"></div>
+                        <p class="grid_txt_area ellipsis">감바스</p>
+                    </li>
+                    <li>
+                        <div class="grid_img_area" style="background-image:url('../img/page/menu/02/sample.jpg')"></div>
+                        <p class="grid_txt_area ellipsis">감바스</p>
+                    </li>
+                    <li>
+                        <div class="grid_img_area" style="background-image:url('../img/page/menu/02/sample.jpg')"></div>
+                        <p class="grid_txt_area ellipsis">감바스</p>
+                    </li>
+                    <li>
+                        <div class="grid_img_area" style="background-image:url('../img/page/menu/02/sample.jpg')"></div>
+                        <p class="grid_txt_area ellipsis">감바스</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- //menu_cont end -->
+<?php
+include_once('../inc/bottom.php');
+?>

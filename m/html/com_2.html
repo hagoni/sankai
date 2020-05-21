@@ -1,0 +1,343 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.page_title_area{display:none}
+.history > .title{padding:6.25vw 0 2.5vw}
+.history > .text{padding-bottom:6.5625vw}
+
+.his_list{}
+
+.his_list > li{position:relative;padding:4.6875vw 0 0 13.125vw;background:url('../img/page/com/02/point_ttl.png')no-repeat 0 0;background-size:13.125vw}
+.his_list > li .his_title{padding:6.25vw 0 2.5vw;font-family:'Arita-buriB';font-size:6.25vw;letter-spacing:-0.05em;line-height:100%;color:#2d2925}
+.his_list > li .his_title.red{font-size:7.8125vw;color:#d70027}
+.list_month{position:relative;padding-bottom:4.0625vw}
+.list_month:before{content:'';position:absolute;top:0;left:-13.125vw;width:13.125vw;height:100%;background:url('../img/page/com/02/his_line.png')repeat-y 0 0;background-size:13.125vw}
+.his_list > li:last-child .list_month{height:30.9375vw;box-sizing:border-box}
+.his_list > li:last-child .list_month:before{background-image:url('../img/page/com/02/his_line_last.png')}
+.list_month .month_th{width:9.375vw;font-family:'NotoSansKR-Medium';font-size:3.75vw;line-height:158%;color:#555}
+.list_month .month_td{width:68.125vw;font-family:'NotoSansKR-Light';font-size:3.75vw;line-height:158%;color:#555}
+.list_month .month_td em{position:relative;font-family:'NotoSansKR-Medium'}
+.list_month .month_td em .line{position:absolute;top:2.1875vw;left:-1px;width:calc(100% + 2px);height:53%;background:#d3b97a}
+.list_month .month_td em .l_text{position:relative}
+</style>
+
+        <div class="history">
+            <p class="title t_center"><em>산카이 히스토리</em></p>
+            <p class="text t_center">
+                산카이에 관심을 가져주시는 모든 고객님과<br>
+                가맹점주님, 예비점주님들께 최고의 모습을<br>
+                보여드리기 위해 최선을 다해 달려나가겠습니다.
+            </p>
+            <ul class="his_list inner">
+                <li>
+                    <p class="his_img"><img src="<?=$root?>/img/page/com/02/his_img2019_1.jpg" alt="" class="w100"></p>
+                    <p class="his_title red">2019</p>
+                    <ul class="list_month">
+                        <li class="fs_def">
+                            <p class="month_th">8월</p>
+                            <p class="month_td">
+                                <em><span class="line"></span><span class="l_text">산카이 우수가맹점 25회차 포상지원품 전달</span></em><br>
+                                <em><span class="line"></span><span class="l_text">- 매월 진행중</span></em><br>
+                                산카이 7기 메뉴 조리교육양성과정 진행
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">7월</p>
+                            <p class="month_td">
+                                <em><span class="line"></span><span class="l_text">산카이 직영본점 확장이전</span></em><br>
+                                <em><span class="line"></span><span class="l_text">산카이 40호점 오픈 / 지방권 가맹 실시</span></em>
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">6월</p>
+                            <p class="month_td">
+                                <em><span class="line"></span><span class="l_text">하나은행 금융지원 업무 협약 체결</span></em>
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">5월</p>
+                            <p class="month_td">
+                                (주)동원홈푸드 식자재공급 협약식 진행
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">1월</p>
+                            <p class="month_td">
+                                대한민국 소비자선호 브랜드 대상 수상
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="his_img"><img src="<?=$root?>/img/page/com/02/his_img2018_1.jpg" alt="" class="w100"></p>
+                    <p class="his_title">2018</p>
+                    <ul class="list_month">
+                        <li class="fs_def">
+                            <p class="month_th">12월</p>
+                            <p class="month_td">
+                                <em><span class="line"></span><span class="l_text">산카이 최우수가맹점 5개점 일본연수 진행</span></em>
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">11월</p>
+                            <p class="month_td">
+                                <em><span class="line"></span><span class="l_text">산카이 우수가맹점 20회차 포상지원품 전달</span></em><br>
+                                <em><span class="line"></span><span class="l_text">- 매월 진행중</span></em><br>
+                                산카이 본사 워크샵 진행
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">10월</p>
+                            <p class="month_td">
+                                산카이 6기 메뉴 조리교육양성과정 진행
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">7월</p>
+                            <p class="month_td">
+                                신영일의 비즈정보플러스 방영<br>
+                                스포츠서울 브랜드 대상 수상
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">5월</p>
+                            <p class="month_td">
+                                <em><span class="line"></span><span class="l_text">산카이 30호점 오픈</span></em><br>
+                                <em><span class="line"></span><span class="l_text">국민은행 프랜차이즈론 금융지원</span></em><br>
+                                <em><span class="line"></span><span class="l_text">업무 협약 체결</span></em>
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">3월</p>
+                            <p class="month_td">
+                                매일경제 100대 브랜드 ‘산카이’ 선정<br>
+                                단골플러스 포인트 적립 솔루션 도입
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">1월</p>
+                            <p class="month_td">
+                                <em><span class="line"></span><span class="l_text">산카이 우수가맹점 10회차 포상지원품 전달</span></em>
+                                <em><span class="line"></span><span class="l_text">- 매월 진행중</span></em>
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="his_img"><img src="<?=$root?>/img/page/com/02/his_img2017_1.jpg" alt="" class="w100"></p>
+                    <p class="his_title">2017</p>
+                    <ul class="list_month">
+                        <li class="fs_def">
+                            <p class="month_th">12월</p>
+                            <p class="month_td">
+                                (주)동광유통 유통 협력 MOU 체결<br>
+                                한솔요리학원 산학 협력 MOU 체결
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">10월</p>
+                            <p class="month_td">
+                                <em><span class="line"></span><span class="l_text">산카이 20호점 오픈</span></em>
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">9월</p>
+                            <p class="month_td">
+                                (주)서영종합유통 유통 협력 MOU 체결<br>
+                                <em><span class="line"></span><span class="l_text">업계 최고의 가맹점 관리 시스템</span></em><br>
+                                <em><span class="line"></span><span class="l_text">'해피 서비스'도입</span></em><br>
+                                산카이 5기 메뉴 조리교육양성과정 진행
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">7월</p>
+                            <p class="month_td">
+                                (주)KFPS 인사노무브랜드 담당 자문계약 체결<br>
+                                '해피 서비스' 기획
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">5월</p>
+                            <p class="month_td">
+                                (주)월드L&F 유통 협력 MOU 체결<br>
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">4월</p>
+                            <p class="month_td">
+                                (주)하이트진로 유통 협력 MOU 체결<br>
+                                <em><span class="line"></span><span class="l_text">산카이 우수가맹점 1회차 포상지원품 전달</span></em><br>
+                                <em><span class="line"></span><span class="l_text">- 매월 진행중</span></em>
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">3월</p>
+                            <p class="month_td">
+                                산카이 4기 메뉴 조리교육양성과정 진행<br>
+                                (주)제이에스푸드 유통 협력 MOU 체결<br>
+                                본사 사옥 이전
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="his_img"><img src="<?=$root?>/img/page/com/02/his_img2016_1.jpg" alt="" class="w100"></p>
+                    <p class="his_title">2016</p>
+                    <ul class="list_month">
+                        <li class="fs_def">
+                            <p class="month_th">10월</p>
+                            <p class="month_td">
+                                창업경영신문 100대 프랜차이즈 '산카이'선정
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">9월</p>
+                            <p class="month_td">
+                                (주)에스웰메이드 유통 협력 MOU 체결
+                                산카이 3기 메뉴 조리교육양성과정 진행
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">8월</p>
+                            <p class="month_td">
+                                <em><span class="line"></span><span class="l_text">산카이 10호점 오픈</span></em><br>
+                                (주)나린푸드 유통 협력 MOU 체결
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">3월</p>
+                            <p class="month_td">
+                                스포츠서울 브랜드 대상 수상<br>
+                                (주)세스코 브랜드 담당 협력 MOU 체결
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">1월</p>
+                            <p class="month_td">
+                                산카이 5호점 오픈
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="his_img"><img src="<?=$root?>/img/page/com/02/his_img2015_1.jpg" alt="" class="w100"></p>
+                    <p class="his_title">2015</p>
+                    <ul class="list_month">
+                        <li class="fs_def">
+                            <p class="month_th">12월</p>
+                            <p class="month_td">
+                                산카이 4호점 오픈
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">9월</p>
+                            <p class="month_td">
+                                산카이 2기 메뉴 조리교육양성과정 진행
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">5월</p>
+                            <p class="month_td">
+                                (주)동원홈푸드 전국물류 유통 협력 MOU 체결
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">2월</p>
+                            <p class="month_td">
+                                <em><span class="line"></span><span class="l_text">신한은행 프랜차이즈론 금융지원</span></em><br>
+                                <em><span class="line"></span><span class="l_text">업무 협약 체결</span></em>
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="his_img"><img src="<?=$root?>/img/page/com/02/his_img2014.jpg" alt="" class="w100"></p>
+                    <p class="his_title">2014</p>
+                    <ul class="list_month">
+                        <li class="fs_def">
+                            <p class="month_th">10월</p>
+                            <p class="month_td">
+                                (주)푸드엠코리아 유통 협력 MOU체결
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">9월</p>
+                            <p class="month_td">
+                                산카이 1기 메뉴 조리교육양성과정 진행
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">7월</p>
+                            <p class="month_td">
+                                (주)롯데아사히 유통 협력 MOU체결
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">6월</p>
+                            <p class="month_td">
+                                (주)다온 유통 협력 MOU체결
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">5월</p>
+                            <p class="month_td">
+                                산카이 3호점 오픈
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">4월</p>
+                            <p class="month_td">
+                                (주)SND CPR 본사 법인 설립
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">2월</p>
+                            <p class="month_td">
+                                산카이 2호점 오픈
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="his_img"><img src="<?=$root?>/img/page/com/02/his_img2013.jpg" alt="" class="w100"></p>
+                    <p class="his_title">2013</p>
+                    <ul class="list_month">
+                        <li class="fs_def">
+                            <p class="month_th">10월</p>
+                            <p class="month_td">
+                                법무법인 태일 브랜드 담당 자문 계약 체결<br>
+                                세무법인 봉정 브랜드 담당 자문 계약 체결
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">9월</p>
+                            <p class="month_td">
+                                (유)만두종합 유통 협력 MOU 체결<br>
+                                <em><span class="line"></span><span class="l_text">산카이 직영본점 오픈</span></em>
+                            </p>
+                        </li>
+                        <li class="fs_def">
+                            <p class="month_th">7월</p>
+                            <p class="month_td">
+                                산카이 브랜드 런칭
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="his_img"><img src="<?=$root?>/img/page/com/02/his_img2012.jpg" alt="" class="w100"></p>
+                    <p class="his_title">2012</p>
+                    <ul class="list_month">
+                        <li class="fs_def">
+                            <p class="month_td">
+                                이자카야 ‘산카이’ 브랜드 기획 및 메뉴개발
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+<?php
+include_once('../inc/bottom.php');
+?>

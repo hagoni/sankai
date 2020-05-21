@@ -1,0 +1,43 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.map{padding-bottom:15.625vw}
+.map_wrap{width:100%;height:65.625vw;}
+.com_add{margin-top:-7.8125vw;height:76.5625vw;background-image: url('../img/page/com/05/com_add_1.jpg')}
+</style>
+        <div class="map">
+            <div class="map_wrap bg" id="map_area">
+
+            </div>
+            <div class="com_add inner bg">
+
+            </div>
+        </div>
+<?
+$markerImgPath = '/new/design/other/marker.png';
+$markerImgSize = getImagesize(ROOT_INC.$markerImgPath);
+?>
+
+<script src="http://maps.googleapis.com/maps/api/js?language=ko&amp;region=kr&amp;libraries=geometry<?if($settings_data['google_api_key']){echo '&key='.$settings_data['google_api_key'];}?>"></script>
+<script>
+$(document).ready(function() {
+    (function() {
+        var map = new google.maps.Map(document.getElementById('map_area'), {
+            center: new google.maps.LatLng(+'37.665857839885206', +'126.75109929141911'),
+            zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+        });
+
+        var marker = new google.maps.Marker({
+            map: map,
+			position: {lat: +'37.665857839885206', lng: +'126.75109929141911'},
+			//title: '',
+            icon: '<?=$markerImgPath?>'
+		});
+    }());
+});
+</script>
+<?php
+include_once('../inc/bottom.php');
+?>

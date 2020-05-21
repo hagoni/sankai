@@ -1,0 +1,777 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+@import url("../css/board.css");
+@import url("../board/view3_inquiry_00/css/skin.css");
+
+.sub_visual_wrap, .page_title_area{display:none}
+.header{position:absolute}
+.lnb_wrap{top:15.625vw}
+.lnb_wrap{background:rgba(255,255,255,0.85)}
+.lnb_wrap.scroll{position:fixed;top:0}
+.sub_content{padding-top:15.625vw}
+
+.layer_ttl{position:relative;padding:12.5vw 0 0;z-index:2}
+.layer_ttl .line{position:absolute;top:0;left:50%;width:1px;height:9.375vw;background:#879bc9}
+.layer_ttl .lt_eng{padding-bottom:0.3125vw;font-family:'Arita-buriL';font-size:3.125vw;letter-spacing:-0.1;line-height:130%;color:#879bc9}
+.layer_ttl .lt_ko{font-family:'Arita-buriM';font-size:4.6875vw;letter-spacing:-0.05em;line-height:120%;color:#fff}
+.lyr_bttl{font-size:7.8125vw;color:#fff}
+
+.fran_bnr{height:156.25vw;background-image:url('../img/page/fran/fran_bnr_bg.jpg')}
+
+.sales{background:#181818}
+.sales > .title{padding:4.6875vw 0 4.6875vw}
+.sales > .text{padding-bottom:6.25vw;color:#bfbfbf}
+.sales .sales_slide{overflow:hidden}
+.sales .sales_slide .swiper-container{width:85.9375vw;overflow:visible}
+.sales_slide .swiper-slide{opacity:0.3}
+.sales_slide .swiper-slide-active{opacity:1}
+.sales_slide .sl_inner{width:81.25vw;margin:0 auto}
+.sales_slide .text_box{width:100%;height:68.75vw;background:#1b2533}
+.sales_slide .stitle{padding:4.6875vw 0 2.5vw;font-size:6.25vw;color:#fff}
+.sales_slide .text{padding-bottom:3.125vw;color:#ccc}
+.sales_slide .sales_btns{position:absolute;top:50%;margin-top:-4.6875vw;width:9.375vw;height:9.375vw;background:no-repeat center;background-size:contain;font-size:0}
+.sales_slide .sales_prev{left:6.25vw;background-image:url('../img/page/fran/sales_prev_1.png')}
+.sales_slide .sales_next{right:6.25vw;background-image:url('../img/page/fran/sales_next_1.png')}
+.sales_slide .sales_paging{padding:4.6875vw 0}
+.sales_slide .sales_paging li{margin-left:3.125vw}
+.sales_slide .sales_paging li:first-child{margin-left:0}
+.sales_slide .sales_paging li a{display:block;width:2.8125vw;height:2.8125vw;border-radius:1.4062vw;background:rgba(255,255,255,0.2);transition:all 1s}
+.sales_slide .sales_paging li.swiper-pagination-bullet-active a{display:block;width:7.5vw;height:2.8125vw;background:rgba(255,255,255,1)}
+
+.story{padding-top:9.375vw;background:#181818}
+.story .lt_ko{font-size:7.8125vw}
+.story .story_img{position:absolute;top:0;right:-13.75vw;width:55vw}
+.story .story_list{padding:4.0625vw 0 7.8125vw}
+.story_list li{margin-bottom:1.5625vw;height:43.75vw}
+.story_list li.bg1{background-image:url('../img/page/fran/story_bg1.jpg')}
+.story_list li.bg2{background-image:url('../img/page/fran/story_bg2.jpg')}
+.story_list li.bg3{background-image:url('../img/page/fran/story_bg3.jpg')}
+.story_list .stitle{padding:7.8125vw 0 3.75vw;color:#fff}
+.story_list .text{color:#bfbfbf}
+
+
+.owner{background:#181818}
+.owner > .title{padding:4.6875vw 0 4.6875vw}
+.owner > .text{padding-bottom:6.25vw;color:#bfbfbf}
+.owner .owner_slide{overflow:hidden}
+.owner .owner_slide .swiper-container{width:85.9375vw;overflow:visible}
+.owner_slide .swiper-slide{opacity:0.3}
+.owner_slide .swiper-slide-active{opacity:1}
+.owner_slide .sl_inner{width:81.25vw;margin:0 auto}
+.owner_slide .text_box{width:100%;height:56.25vw;background:#fff;line-height:56.25vw}
+.owner_slide .va_m{display:inline-block;vertical-align:middle}
+.owner_slide .stitle{padding:0 0 2.5vw;font-size:6.25vw}
+.owner_slide .owner_btns{position:absolute;top:50%;margin-top:-4.6875vw;width:9.375vw;height:9.375vw;background:no-repeat center;background-size:contain;font-size:0}
+.owner_slide .owner_prev{left:6.25vw;background-image:url('../img/page/fran/sales_prev_1.png')}
+.owner_slide .owner_next{right:6.25vw;background-image:url('../img/page/fran/sales_next_1.png')}
+.owner .owner_con{height:252.1875vw;margin-top:-56.25vw;padding-top:56.25vw;box-sizing:border-box;background-image:url('../img/page/fran/owner_con_bg.jpg')}
+.owner_con .title{padding:14.6875vw 0 8.75vw}
+.owner_con .owner_list{border:1px solid rgba(255,255,255,0.2);border-width:1px 0}
+.owner_list li{position:relative;width:68.75vw;margin:0 auto;border-bottom:1px solid rgba(255,255,255,0.2);text-align:center}
+.owner_list li:last-child{border:0}
+.owner_list .list_img{position:absolute;top:2.1875vw;right:-7vw;width:13.125vw}
+.owner_list .stitle{display:inline-block;position:relative;padding:6.875vw 0;color:#fff}
+.owner_list .stitle em{color:#d4b66c}
+.owner_con .stitle.ex{padding:6.875vw 0 2.5vw;color:#fff}
+.owner_con .text{font-size:3.75vw;color:#bfbfbf}
+
+.menu{background:#181818}
+.menu > .title{padding:4.6875vw 0 4.6875vw}
+.menu > .text{color:#bfbfbf}
+.menu .menu_img_slide{}
+.menu .menu_slide{margin-top:2.5vw;margin-bottom:6.25vw}
+.menu_slide .stitle{padding-top:3.75vw;position:relative;color:#fff}
+.menu_slide .stitle .num{position:absolute;bottom:0;left:-8vw;font-family:'Arita-buriSB';font-size:10vw;letter-spacing:-0.05em;line-height:100%;color:rgba(255,255,255,0.2)}
+.menu_slide .text{padding-top:2.8125vw;color:#bfbfbf}
+.menu_slide .menu_btns{position:absolute;top:50%;margin-top:-5.3125vw;width:10.9375vw;height:10.9375vw;background:no-repeat center;background-size:contain;font-size:0}
+.menu_slide .menu_prev{left:4.6875vw;background-image:url('../img/page/fran/menu_prev.png')}
+.menu_slide .menu_next{right:4.6875vw;background-image:url('../img/page/fran/menu_next.png')}
+.menu_flow_slide li{width:54.6875vw;margin-right:1.5625vw}
+.menu_flow_slide .name{position:absolute;bottom:0;left:0;width:100%;height:8.4375vw;background:rgba(0,0,0,0.5);font-size:3.4375vw;line-height:8.4375vw;color:rgba(255,255,255,0.5);text-align:center}
+
+.happy{padding-bottom:12.5vw;background:#181818}
+.happy > .title{padding:4.6875vw 0 2.5vw}
+.happy > .text{padding-bottom:6.25vw;color:#bfbfbf}
+.happy_list{padding-top:2vw}
+.happy_list li{margin-bottom:0.9375vw}
+.happy_list li a{display:block;position:relative;padding:1.875vw 0}
+.happy_list li .arr{position:absolute;top:50%;right:1.5625vw;margin-top:-1.875vw;width:3.75vw;height:3.75vw;background:url('../img/page/fran/happy_arr1.png')no-repeat center;background-size:contain}
+.happy_list li .arr.on{position:absolute;top:50%;right:1.5625vw;margin-top:-1.875vw;width:3.75vw;height:3.75vw;background:url('../img/page/fran/happy_arr2.png')no-repeat center;background-size:contain}
+.happy_list .text_wrap{margin-left:3.125vw;padding:2.5vw 0;padding-left:4.6875vw;border-left:1px solid rgba(255,255,255,0.2)}
+.happy_list .stitle{letter-spacing:-0.07em;color:#fff}
+.happy_list .text{font-size:3.75vw;color:#bfbfbf}
+
+.comp{padding-bottom:10.625vw;background:#181818}
+.comp_bg > .title{padding:4.6875vw 0 2.5vw}
+.comp_bg > .text{padding-bottom:6.25vw;color:#bfbfbf}
+.comp .comp_bg{height:132.8125vw;background-image:url('../img/page/fran/comp_bg.jpg')}
+.comp .layer_ttl .line{top:-7.8125vw;height:18.75vw}
+.comp .comp_slide{height:112.5vw;margin-top:-44.375vw;background:#1b2533}
+.comp_slide .swiper-slide .sl_img{padding:4.6875vw 4.6875vw 0}
+.comp_slide .text_wrap{display:table;width:100%;height:44.375vw}
+.comp_slide .va_m{display:table-cell;vertical-align:middle}
+.comp_slide .title{padding-bottom:3vw;color:#fff}
+.comp_slide .text{color:#bfbfbf}
+.comp_slide .comp_paging{padding:0}
+.comp_slide .comp_paging li.swiper-pagination-bullet-active a{background:#fff}
+
+.cost{background:#111}
+.cost .cost_tab li{margin-left:10vw}
+.cost .cost_tab li:first-child{margin-left:0}
+.cost .cost_tab li a{display:block;font-family:'Arita-buriSB';font-size:3.75vw;letter-spacing:-0.05em;line-height:140%;opacity: 0.5;color:#fff}
+.cost .cost_tab li.swiper-pagination-bullet-active a{background-color:#d4b66c; border: 3px solid #d4b66c; opacity:1; color:#fff}
+.cost > .title{padding:20.3125vw 0 2.5vw;font-size:9.375vw;color:#fff}
+.cost > .text{padding-bottom:8.125vw;color:#bfbfbf}
+.cost .cont1{padding:7.8125vw 0}
+.cost .cont2{padding:7.8125vw 0}
+.cost .cost2_btns{position:absolute;top:0;width:2.8125vw;height:4.6875vw;background:no-repeat center;background-size:contain;font-size:0}
+.cost .cost2_prev{left:30%;background-image:url('../img/page/fran/cost2_prev.png')}
+.cost .cost2_next{right:30%;background-image:url('../img/page/fran/cost2_next.png')}
+.cost .cont3{padding:7.8125vw 0}
+
+.inquery{background:#222}
+.inquery .title{padding:20.3125vw 0 2.5vw;font-size:9.375vw;color:#fff}
+.inquery .text{padding-bottom:3vw;color:#bfbfbf}
+.iqr_check{border:0}
+.open_policy{color:#bfbfbf}
+.open_policy em{color:#bfbfbf}
+.open_policy em:before{background:#bfbfbf}
+.iqr_tit{color:#bfbfbf}
+.field_title{color:#bfbfbf}
+.inquiry_fields input[type="text"], .inquiry_fields select{border-color:rgba(201,201,201,0.2);background:none}
+.inquiry_fields select#email_03{background-color:transparent}
+.input_radio label {border-color:rgba(201,201,201,0.2);background:none;color:#bfbfbf}
+.input_radio input:checked + label{background:#d4b66c;color:#000}
+.input_radio:last-child label{border-color:rgba(201,201,201,0.2)}
+.inquiry_fields textarea{border-color:rgba(201,201,201,0.2);background:none}
+
+.shadow{
+  text-shadow: 0 0 5px black, 0 0 5px black, 0 0 5px black, 0 0 5px black, 0 0 5px black, 0 0 5px black, 0 0 5px black;
+}
+</style>
+        <div class="fran_bnr bg chapters">
+
+        </div>
+        <div class="sales chapters">
+            <div class="layer_ttl t_center">
+                <span class="line"></span>
+                <p class="lt_eng">High Sales</p>
+                <p class="lt_ko">높은 매출</p>
+            </div>
+            <p class="title lyr_bttl t_center">
+                <em>탄력있는 매출로</em><br>
+                언제나 미소 짓습니다
+            </p>
+            <p class="text t_center">
+                저가 포차, 와인 주점, 수제 맥주처럼<br>
+                반짝 유행하는 브랜드와 달리 유행을 타지 않고<br>
+                지속적으로 성장하고 있는 안정성 있는 브랜드입니다.
+            </p>
+            <div class="sales_slide rel">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide swiper-slide-active">
+                            <div class="sl_inner">
+                                <img src="<?=$root?>/img/page/fran/sales_sl1.jpg" alt="" class="w100">
+                                <div class="text_box t_center">
+                                    <p class="stitle">
+                                        충족할 수 있는<br>
+                                        <em>높은 테이블 단가</em>
+                                    </p>
+                                    <p class="text">
+                                        차별화된 맛과 공간은 물론<br>
+                                        디테일한 서비스의 제공으로<br>
+                                        높은 테이블 단가의 합리성을 충족합니다.
+                                    </p>
+                                    <p class="text">
+                                        50,000원 ~ 53,000원 수준의 테이블 <br>
+                                        단가로 쉽게 높은 매출을 창출합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="<?=$root?>/img/page/fran/sales_sl2.jpg" alt="" class="w100">
+                                <div class="text_box t_center">
+                                    <p class="stitle">
+                                        팔려야 할 술이 잘 팔리는<br>
+                                        <em>이자카야 술집</em>
+                                    </p>
+                                    <p class="text">
+                                        일반 주류(소주, 맥주)와 5:5의 판매 비율로<br>
+                                        사케와 일본 생맥주에 대한<br>
+                                        판매 비율이 높습니다.
+                                    </p>
+                                    <p class="text">
+                                        다양한 프로모션을 통해 수익성 높은<br>
+                                        주류의 판매를 촉진합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-active">
+                            <div class="sl_inner">
+                                <img src="<?=$root?>/img/page/fran/sales_sl3.jpg" alt="" class="w100">
+                                <div class="text_box t_center">
+                                    <p class="stitle">
+                                        <em>합리적인<br>
+                                        세트 메뉴 구성</em>
+                                    </p>
+                                    <p class="text">
+                                        수준 높은 맛으로 세트 메뉴에 대한<br>
+                                        니즈가 강합니다.
+
+                                    </p>
+                                    <p class="text">
+                                        고객은 합리적인 가격으로 만족하고<br>
+                                        가맹점은 높은 매출로 만족합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="<?=$root?>/img/page/fran/sales_sl4.jpg" alt="" class="w100">
+                                <div class="text_box t_center">
+                                    <p class="stitle">
+                                        소비력 있는 계층의<br>
+                                        <em>니즈를 충족</em>
+                                    </p>
+                                    <p class="text">
+                                        20대 중반 이상의 세대부터<br>
+                                        중장년층의 세대까지.
+                                    </p>
+                                    <p class="text">
+                                        다양한 세대가 함께 융화되는 편안한 <br>
+                                        공간과 정통성 있는 이자카야 요리로 <br>
+                                        주요 타겟층의 니즈를 충족합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="<?=$root?>/img/page/fran/sales_sl5.jpg" alt="" class="w100">
+                                <div class="text_box t_center">
+                                    <p class="stitle">
+                                        상권에 따른<br>
+                                        <em>딜리버리 서비스를 지원</em>
+                                    </p>
+                                    <p class="text">
+                                        신도시와 같은 대형 주거 상권에<br>
+                                        입점하는 매장은 딜리버리 서비스를 통해<br>
+                                        높은 추가 매출을 창출합니다.
+                                    </p>
+                                    <p class="text">
+                                        일반 상권의 가맹점은 해당하는 상권의 <br>
+                                        수요와 수익성을 철저히 분석해 적합할<br>
+                                        경우에만 딜리버리 서비스를 지원합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="sales_btns sales_prev">이전</button>
+                <button type="button" class="sales_btns sales_next">다음</button>
+                <ul class="sales_paging fs_def t_center">
+                    <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+                    <li><a href="#none"></a></li>
+                    <li><a href="#none"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="story rel over_h chapters">
+            <div class="layer_ttl t_center">
+                <span class="line"></span>
+                <p class="lt_eng">Brand Story</p>
+                <p class="lt_ko">브랜드 경쟁력</p>
+            </div>
+            <div class="story_img"><img src="<?=$root?>/img/page/fran/story_img.png" alt="" class="w100"></div>
+            <ul class="story_list inner t_center shadow">
+                <li class="bg1 bg">
+                    <p class="stitle ">넘치는 <em>요리의 자부심</em></p>
+                    <p class="text">
+                        어디선가 맛보았던 똑같은 음식이 아닌<br>
+                        정통성을 내재한<br>
+                        독창적인 안주 요리를 만듭니다.
+                    </p>
+                </li>
+                <li class="bg2 bg">
+                    <p class="stitle">따스하고 은은한 독립적인 <em>목로공간</em></p>
+                    <p class="text">
+                        테이블 파티션을 통해<br>
+                        복잡한 사람들과 분리된<br>
+                        독립적인 공간을 창출합니다.
+                    </p>
+                </li>
+                <li class="bg3 bg">
+                    <p class="stitle">섬세한 <em>디테일의 감동</em></p>
+                    <p class="text">
+                        서너 잔의 술을 나누기에 부족함 없는<br>
+                        수준 높은 기본 안주를 제공합니다.<br>
+                        조리 시간의 기다림이 지루하지 않습니다.
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div class="owner chapters">
+            <div class="layer_ttl t_center">
+                <span class="line"></span>
+                <p class="lt_eng">Owner-Chef</p>
+                <p class="lt_ko">오너셰프</p>
+            </div>
+            <p class="title lyr_bttl t_center"><em>실패하지 않는 이자카야</em></p>
+            <p class="text t_center">
+                단 한 분의 낙오없이 함께 성공하기 위해<br>
+                철저한 오너셰프 교육과<br>
+                간소화된 조리 시스템을 제공합니다.
+            </p>
+            <div class="owner_slide rel">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide swiper-slide-active">
+                            <div class="sl_inner">
+                                <img src="<?=$root?>/img/page/fran/owner_sl1.jpg" alt="" class="w100">
+                                <div class="text_box t_center">
+                                    <div class="va_m">
+                                        <p class="stitle">
+                                            <em>철저한 4주간의 교육,<br>
+                                            오너셰프가 되다</em>
+                                        </p>
+                                        <p class="text">
+                                            본사 조리 R&D를 완벽하게 이수한 후<br>
+                                            현장 실습을 통해 총 4주간 철저하게<br>
+                                            교육하며 신메뉴 출시때마다 가맹점으로<br>
+                                            직접 교육 인력을 파견합니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="<?=$root?>/img/page/fran/owner_sl2.jpg" alt="" class="w100">
+                                <div class="text_box t_center">
+                                    <div class="va_m">
+                                        <p class="stitle">
+                                            <em>누구나 쉽게 사시미를<br>
+                                            제공할 수 있다</em>
+                                        </p>
+                                        <p class="text">
+                                            모든 사시미 요리는 슬라이드 된 상태로<br>
+                                            가맹점에 납품되어 생선 살을 떠 내는 <br>
+                                            주방 인력이 필요하지 않습니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="<?=$root?>/img/page/fran/owner_sl3.jpg" alt="" class="w100">
+                                <div class="text_box t_center">
+                                    <div class="va_m">
+                                        <p class="stitle">
+                                            <em>간소화된 조리 시스템</em>
+                                        </p>
+                                        <p class="text">
+                                            주요 조리 과정의 60%을 처리해<br>
+                                            가맹점에 물류를 제공합니다.<br>
+                                            4주간의 교육을 이수한 오너셰프라면<br>
+                                            누구나 쉽게 맛있는 이자카야 요리를<br>
+                                            만들 수 있습니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="owner_btns owner_prev">이전</button>
+                <button type="button" class="owner_btns owner_next">다음</button>
+            </div>
+            <div class="owner_con bg">
+                <p class="title lyr_bttl t_center">
+                    <em>오너셰프가 되어보니<br>
+                    많은 것이 뒤따릅니다</em>
+                </p>
+                <ul class="owner_list">
+                    <li>
+                        <p class="stitle t_center">
+                            <span class="list_img"><img src="<?=$root?>/img/page/fran/owner_arr1.png" alt="" class="w100"></span>
+                            주방 전문 인력으로 인한<br>
+                            <em>인건비 절감</em>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="stitle t_center">
+                            <span class="list_img"><img src="<?=$root?>/img/page/fran/owner_arr1.png" alt="" class="w100"></span>
+                            원팩 시스템에 비해<br>
+                            <em>현저히 낮은 원가율</em>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="stitle t_center">
+                            <span class="list_img"><img src="<?=$root?>/img/page/fran/owner_arr2.png" alt="" class="w100"></span>
+                            일관된 주방 컨디션으로<br>
+                            <em>고객 만족도 증가</em>
+                        </p>
+                    </li>
+                </ul>
+                <p class="stitle ex t_center">
+                    이를 대체할 수 있는<br>
+                    원팩 시스템은 존재하지 않습니다.
+                </p>
+                <p class="text t_center">
+                    이자카야에 대한 고객 니즈는 분명합니다.<br>
+                    요리 본연의 매력을 극대화한 맛을 통한 만족<br><br>
+
+                    현지에서 직접 생산되는 향미료를 사용해야<br>
+                    제대로 된 맛을 낼 수 있는 나가사키 짬뽕처럼<br>
+                    대부분의 이자카야 요리는 쉐프의 손 맛이 더해져야<br>
+                    요리 본연의 매력을 극대화 할 수 있습니다.
+                </p>
+            </div>
+        </div>
+        <div class="menu chapters">
+            <div class="layer_ttl t_center">
+                <span class="line"></span>
+                <p class="lt_eng">Menu Renewal</p>
+                <p class="lt_ko">메뉴 리뉴얼</p>
+            </div>
+            <p class="title lyr_bttl t_center">
+                <em>가볍게 완성이라<br>
+                판단하지 않습니다</em>
+            </p>
+            <p class="text t_center">
+                1년간 구축한 메뉴 판매 경향 분석 자료를 토대로<br>
+                불필요한 메뉴는 제외하고<br>
+                신메뉴 출시를 통해 이를 보완합니다.
+            </p>
+            <div class="menu_img_slide">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <img src="<?=$root?>/img/page/fran/menu_sl1.png" alt="" class="w100">
+                        </li>
+                        <li class="swiper-slide">
+                            <img src="<?=$root?>/img/page/fran/menu_sl2.png" alt="" class="w100">
+                        </li>
+                        <li class="swiper-slide">
+                            <img src="<?=$root?>/img/page/fran/menu_sl3.png" alt="" class="w100">
+                        </li>
+                        <li class="swiper-slide">
+                            <img src="<?=$root?>/img/page/fran/menu_sl4.png" alt="" class="w100">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="menu_slide rel">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <div class="fs_def t_center">
+                                <p class="stitle"><span class="num">01</span><span class="ttl">대규모 메뉴 개편</span></p>
+                            </div>
+                            <p class="text t_center">
+                                보여주기식에 급급한 분기별 신메뉴<br>
+                                출시가 아닌 전체 메뉴 라인을 점검하고<br>
+                                트렌디한 신메뉴와 함께<br>
+                                대규모 메뉴 개편을 시행합니다.
+                            </p>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="fs_def t_center">
+                                <p class="stitle"><span class="num">02</span><span class="ttl">신메뉴 출시를 통해 보완</span></p>
+                            </div>
+                            <p class="text t_center">
+                                1년간 구축한 메뉴 판매 경향 분석 자료를<br>
+                                토대로 불필요한 메뉴는 제외하고<br>
+                                신메뉴 출시를 통해 이를 보완합니다.
+                            </p>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="fs_def t_center">
+                                <p class="stitle"><span class="num">03</span><span class="ttl">끊임없는 고찰과 설문조사</span></p>
+                            </div>
+                            <p class="text t_center">
+                                시그니처라 불리우는 메뉴들 또한<br>
+                                끊임없는 고찰과 설문 조사를 통해<br>
+                                아쉬운 부분을 찾고 이를 개선합니다.
+
+                            </p>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="fs_def t_center">
+                                <p class="stitle"><span class="num">04</span><span class="ttl">고객의 니즈를 충족</span></p>
+                            </div>
+                            <p class="text t_center">
+                                현장 경험을 통한 가맹점 의견과<br>
+                                본사에서 분석한 외식 트렌드 의견을 조율해<br>
+                                고객의 니즈를 충족할 수 있는<br>
+                                영향력 있는 신메뉴를 출시합니다.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="menu_btns menu_prev">이전</button>
+                <button type="button" class="menu_btns menu_next">다음</button>
+            </div>
+            <div class="menu_flow_slide w100">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <img src="<?=$root?>/img/page/fran/menu_f_img1.png" alt="" class="w100">
+                            <!-- <p class="name">모츠나베</p> -->
+                        </li>
+                        <li class="swiper-slide">
+                            <img src="<?=$root?>/img/page/fran/menu_f_img2.jpg" alt="" class="w100">
+                            <!-- <p class="name">모츠나베</p> -->
+                        </li>
+                        <li class="swiper-slide">
+                            <img src="<?=$root?>/img/page/fran/menu_f_img3.jpg" alt="" class="w100">
+                            <!-- <p class="name">모츠나베</p> -->
+                        </li>
+                        <li class="swiper-slide">
+                            <img src="<?=$root?>/img/page/fran/menu_f_img4.jpg" alt="" class="w100">
+                            <!-- <p class="name">모츠나베</p> -->
+                        </li>
+                        <li class="swiper-slide">
+                            <img src="<?=$root?>/img/page/fran/menu_f_img5.jpg" alt="" class="w100">
+                            <!-- <p class="name">모츠나베</p> -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="happy chapters">
+            <div class="layer_ttl t_center">
+                <span class="line"></span>
+                <p class="lt_eng">Happy Service</p>
+                <p class="lt_ko">본사 지원</p>
+            </div>
+            <p class="title lyr_bttl t_center">
+                <em>든든한 버팀목이 되어<br>
+                함께 웃겠습니다</em>
+            </p>
+            <p class="text t_center">
+                형식적으로 묻고 답하는 단순한 방문이 아닌 문제를<br>
+                찾아내고 개선하는 의미 있는 방문을 시행하기 위해<br>
+                전문 인력의 해피바이저를 가맹점에 투입합니다.
+            </p>
+            <p class="inner"><img src="<?=$root?>/img/page/fran/happy_img_1.jpg" alt="" class="w100"></p>
+            <ul class="happy_list inner">
+                <li class="on">
+                    <a href="#none">
+                        <p class="stitle">01. 똑똑한 해피바이저의 행복한 해피서비스</p>
+                        <span class="arr"></span>
+                    </a>
+                    <div class="text_wrap">
+                        <p class="text">
+                            각 매장의 식자재 관리는 물론 메뉴 품질, 신메뉴<br>
+                            교육, 홀 서비스 및 청결 상태를 체크하고 탄력있는<br>
+                            매장 운영과 홍보 마케팅을 지원합니다.<br><br>
+
+                            모든 것이 완벽하다면?<br>
+                            고생하셨습니다. 사장님 퇴근하세요!<br><br>
+
+                            오늘 하루 잠깐의 시간이지만 똑똑한 해피바이저가<br>
+                            사장님 대신 일하고 퇴근하겠습니다.
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <a href="#none">
+                        <p class="stitle">02. 주방인력 채용시 무상 조리 교육 지원</p>
+                        <span class="arr"></span>
+                    </a>
+                    <div class="text_wrap" style="display:none">
+                        <p class="text">
+                            새롭게 채용한 주방 인력 고민말고<br>
+                            본사로 보내주십시요.<br><br>
+
+                            빠른 시간내에 완벽한<br>
+                            산카이 쉐프로 변화시키겠습니다.
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <a href="#none">
+                        <p class="stitle">03. 예상치 못했던 법적 문제들 해결</p>
+                        <span class="arr"></span>
+                    </a>
+                    <div class="text_wrap" style="display:none">
+                        <p class="text">
+                            산카이 본사의 경영 자문 그룹<br>
+                            (법률, 노무, 세무, 가맹거래 등)에 의한<br>
+                            지원으로 신속히 해결합니다.
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="comp chapters">
+            <div class="comp_bg">
+                <div class="layer_ttl t_center">
+                    <span class="line"></span>
+                    <p class="lt_eng">Competitiveness</p>
+                    <p class="lt_ko shadow">창업 경쟁력</p>
+                </div>
+                <p class="title lyr_bttl t_center shadow">
+                    10년 이상 운영할 수 있는<br>
+                    <em>안정성을 검증하다</em>
+                </p>
+                <p class="text t_center shadow">
+                    이자카야 요리 주점 산카이는 저가 포차,<br>
+                    와인 주점, 수제 맥주처럼<br>
+                    반짝 유행하는 브랜드와 달리 유행을 타지 않고<br>
+                    지속적으로 성장하고 있는 안정성 있는 브랜드입니다.
+                </p>
+            </div>
+            <div class="comp_slide inner">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <p class="sl_img"><img src="<?=$root?>/img/page/fran/comp_sl1.jpg" alt="" class="w100"></p>
+                                <div class="text_wrap">
+                                    <div class="va_m t_center">
+                                        <p class="title">
+                                            상권의 탓을 하지 않습니다
+                                        </p>
+                                        <p class="text">
+                                            특수 상권은 물론 오피스 및<br>
+                                            역세권 상권, 동네 상권에서도<br>
+                                            성공할 수 있는 경쟁력이 검증되었습니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <p class="sl_img"><img src="<?=$root?>/img/page/fran/comp_sl2.jpg" alt="" class="w100"></p>
+                                <div class="text_wrap">
+                                    <div class="va_m t_center">
+                                        <p class="title">
+                                            소형 매장에서도<br>
+                                            높은 매출 창출이 가능
+                                        </p>
+                                        <p class="text">
+                                            다른 주점 아이템에 비해 높은 테이블 단가로 <br>
+                                            20평 매장에서도 높은 매출 창출이 가능합니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <p class="sl_img"><img src="<?=$root?>/img/page/fran/comp_sl3.jpg" alt="" class="w100"></p>
+                                <div class="text_wrap">
+                                    <div class="va_m t_center">
+                                        <p class="title">
+                                            가맹점 매출 활성화<br>
+                                            시스템 운영
+                                        </p>
+                                        <p class="text">
+                                            다양한 채널의 SNS 마케팅 및 로컬 마케팅 분석<br>
+                                            시스템, 매장 재방문 유도를 위한 포인트 적립 시스템,<br>
+                                            본사에서 진행하는 전 가맹점 통합 이벤트 행사
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <p class="sl_img"><img src="<?=$root?>/img/page/fran/comp_sl4.jpg" alt="" class="w100"></p>
+                                <div class="text_wrap">
+                                    <div class="va_m t_center">
+                                        <p class="title">
+                                            점포개발 및 상권분석<br>
+                                            시스템 운영합니다
+                                        </p>
+                                        <p class="text">
+                                            출점전략, 시장조사 분석, 입지선정 전략,<br>
+                                            점포개발, 상권분석 시스템을 통해 투자 타당성이<br>
+                                            적합한 최적의 매물을 항시 보유하고 있습니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="comp_paging cmn_paging fs_def t_center">
+                    <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+                    <li><a href="#none"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="cost chapters">
+            <p class="title t_center"><em>창업은 어떻게</em></p>
+            <p class="text t_center">
+                창업을 생각하시는 예비점주님들께<br>
+                하나하나 진심으로 도와드리겠습니다.
+            </p>
+            <ul class="cost_tab fs_def t_center">
+                <!-- <li class="on"><a href="#none">창업절차</a></li>
+                <li><a href="#none">수익성 분석</a></li>
+                <li><a href="#none">창업비용</a></li> -->
+            </ul>
+            <div class="cost_conts swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="cont1 swiper-slide">
+                        <div class="inner">
+                            <img src="<?=$root?>/img/page/fran/cost1_img.png" alt="" class="w100">
+                        </div>
+                    </div>
+                    <div class="cont2 swiper-slide">
+                        <div class="cost2_slide inner">
+                            <div class="swiper-container">
+                                <!--<ul class="swiper-wrapper">
+                                    <li class="swiper-slide">
+                                        <img src="<?=$root?>/img/page/fran/cost2_sl1.png" alt="" class="w100">
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <img src="<?=$root?>/img/page/fran/cost2_sl2.png" alt="" class="w100">
+                                    </li>-->
+                                    <li class="swiper-slide">
+                                        <img src="<?=$root?>/img/page/fran/cost2_sl3_1.png" alt="" class="w100">
+                                    </li>
+                                <!--</ul>-->
+                            </div>
+                            <!--<button type="button" class="cost2_btns cost2_prev">이전</button>
+                            <button type="button" class="cost2_btns cost2_next">다음</button>-->
+                        </div>
+                    </div>
+                    <div class="cont3 swiper-slide">
+                        <div class="inner">
+                            <img src="<?=$root?>/img/page/fran/cost3_img.jpg" alt="" class="w100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inquery chapters">
+            <p class="title t_center"><em>가맹문의</em></p>
+            <p class="text t_center">산카이와 성공창업을 함께하세요.</p>
+<?
+$view3_type = 'list';
+$board = 'inquiry_01';
+$view3_sca = '1n1_01';
+$view3_skin = 'view3_inquiry_00';
+$h2_title_sub = '가맹상담';
+$no_include = true;
+include(BOARD_INC.'/index.php');
+?>
+        </div>
+<script src="<?=$root?>/js/fran.js"></script>
+<?php
+include_once('../inc/bottom.php');
+?>

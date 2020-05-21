@@ -1,0 +1,188 @@
+<?php
+include_once('../inc/top.php');
+
+include(ROOT_INC.'/admin/view3_menu_03/cat.php');
+
+$view_idx = $_REQUEST['idx'];
+$view_sca = $_REQUEST['sca'];
+$view_tab = $_REQUEST['tab'];
+
+if($view3_tab == '') {
+	$view3_tab = 1;
+}
+
+if(!strcmp($view3_sca,"all")){
+    $next_sca = "";
+}else if(!strcmp($view3_sca,"new")){
+    $next_sca = " and view3_sca='new'";
+}else{
+    $next_sca = " and view3_sca='".$view3_sca."'";
+}
+
+if ($view3_tab) {
+    if (!strcmp($view3_tab,"") or !strcmp($view3_tab,"1")) {
+        $next_link = "";
+    } else {
+        $next_link = " and view3_link='".$view3_tab."'";
+    }
+}
+?>
+<style>
+.grid_wrap{position:relative;width:90.625vw;margin:0 auto;padding-bottom:15.625vw;}
+.menu_tabmenu{text-align:center;}
+.menu_tabmenu li{position:relative;margin-bottom:2.5vw;margin-right:3%;}
+.menu_tabmenu li:last-child{margin-right:0;}
+.menu_tabmenu li a{padding:0 0.625vw;font-family:'Arita-buriSB';font-size:4.0625vw;line-height:140%;color:#2d2925}
+.menu_tabmenu li.on a:before{content:'';position:absolute;top:100%;left:0;width:100%;height:0.625vw;background:#d4b66c}
+.menu_tabmenu .tab_br{display:block}
+.menu_tabmenu .tab_br + li{margin-left:0;margin-bottom:0}
+
+.grid_list:after{display:block;clear:both;content:""}
+.grid_list li{position:relative;float:left;width:44.375vw;margin-left:1.5625vw;margin-bottom:1.875vw}
+.grid_list li:nth-child(odd){margin-left:0}
+.grid_list li a{position:relative;display:block;width:100%;border:1px solid #aeaeae;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+.grid_img_area{position:relative;width:100%}
+.grid_img{position:relative;padding-top:80%;background-repeat:no-repeat;background-position:center;background-size:cover}
+.grid_txt_area{position:relative;max-width:100%;font-size:16px;text-align:center}
+.grid_txt_area .board_txt{font-family:'NotoSansKR-Regular';font-size:3vw;line-height:8.5937vw;color:#202020}
+
+/* menu view */
+.menu_info{overflow:hidden;position:relative;width:100%;margin-bottom:20px;border:1px solid #ebebeb;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+.menu_info .slider-container{overflow:hidden;position:relative;width:100%;height:100%}
+.menu_info .slider-wrapper{height:100%}
+.menu_info .slider-wrapper:after{display:block;clear:both;content:""}
+.menu_info .slider-items{position:relative;width:100%;height:100%}
+.menu_info .slider-items:after{display:block;clear:both;content:""}
+.menu_info .slider-items .menu_img_area{width:740px;background-color:#fff}
+.menu_info .slider-items .menu_img{max-width:100%}
+.menu_info .slider-items .menu_txt_area{position:absolute;top:0;right:0;width:418px;height:100%;padding:75px 60px;background-color:#fbfbfb;border-left:1px solid #ebebeb;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+.menu_info .slider-btns{display:block;position:absolute;bottom:20px;width:40px;height:40px;text-indent:-9000px;background-repeat:no-repeat}
+.menu_info .slider-prev{right:75px;background-image:url("../img/board/btn_menu_prev.jpg")}
+.menu_info .slider-next{right:30px;background-image:url("../img/board/btn_menu_next.jpg")}
+.menu_txt{padding-top:35px}
+.menu_txt p{line-height:150%}
+.menu_close{display:block;position:absolute;top:30px;right:30px;z-index:20;width:45px;height:45px;text-indent:-9000px;background-image:url("../img/board/btn_menu_close.png");background-repeat:no-repeat}
+
+/* 반응형 일때 */
+@media screen and (max-width:1180px) and (min-width:768px) {
+	.menu_info{margin-bottom:2%}
+	.menu_info .slider-items .menu_img_area{width:64%}
+	.menu_info .slider-items .menu_txt_area{width:36%;padding:45px 38px}
+	.menu_info .slider-btns{bottom:15px;width:30px;height:30px;background-size:30px 30px}
+	.menu_info .slider-prev{right:52px}
+	.menu_info .slider-next{right:20px}
+	.menu_txt{padding-top:25px}
+	.menu_close{top:20px;right:20px;width:35px;height:35px;background-size:35px 35px}
+}
+@media screen and (max-width:767px) {
+	.menu_info .slider-items .menu_img_area{position:relative;width:100%}
+	.menu_info .slider-items .menu_txt_area{position:relative;left:0;right:auto;width:100%;padding:5%;border-left:0;border-top:1px solid #ebebeb}
+	.menu_info .slider-btns{bottom:auto;top:10px;width:20px;height:20px;background-size:20px 20px}
+	.menu_info .slider-prev{right:53px}
+	.menu_info .slider-next{right:32px}
+	.menu_txt{padding-top:10px}
+	.menu_close{top:10px;right:10px;width:20px;height:20px;background-size:20px 20px}
+}
+</style>
+
+        <div>
+            <?if($menuCatNew[$view3_sca]) {?>
+            <ul class="menu_tabmenu fs_def t_center">
+                <li<?if($view3_tab == 1){echo ' class="on"';}?>><a href="<?=URL_PATH.'?'.get('tab', 'tab=1')?>">ALL</a></li>
+                <?foreach($menuCatNew[$view3_sca] as $key => $val) {?>
+                <li<?if($view3_tab == $key){echo ' class="on"';}?>>
+                    <a href="<?=URL_PATH.'?'.get('tab', 'tab='.$key)?>"><?=$val?></a>
+                </li>
+                <?}?>
+            </ul>
+            <?}?>
+            <!-- <ul class="menu_tabmenu fs_def t_center">
+                <li class="tab_br"></li>
+                <li class="on"><a href="#none">ALL</a></li>
+                <li><a href="#none">일품요리</a></li>
+                <li><a href="#none">튀김요리</a></li>
+                <li class="tab_br"></li>
+                <li><a href="#none">탕요리</a></li>
+                <li><a href="#none">철판요리</a></li>
+            </ul> -->
+            <div id="boardWrap">
+					<div class="grid_wrap">
+                        <div id="menuInfoContainer" class="menu_info"<?if(isset($_REQUEST['idx']) == false){echo ' style="display:none"';}?>>
+<?
+	if(strcmp($_REQUEST['idx'],"")){
+		$view3_idx = $_REQUEST['idx'];
+		$top_sql = "select * from ".TABLE_LEFT."menu_01 where view3_use = 1 {$next_sca} {$next_link} and view3_idx = {$view3_idx} order by view3_order desc,view3_write_day desc";
+		$out_top_sql = @mysql_query($top_sql);
+		$top_list = @mysql_fetch_assoc($out_top_sql);
+        $top_img = explode("||",$top_list['view3_file']);
+		view3_hit($view3_table, $view3_idx);
+######################################################################################################################################################
+// 이전글 다음글
+######################################################################################################################################################
+		$sort = view3_prev_next($view3_table,$view3_idx);
+		$path_prev = view3_link("||idx","view&idx=".$temp_prev,"",$end_path);
+		$path_next = view3_link("||idx","view&idx=".$temp_next,"",$end_path);
+######################################################################################################################################################
+		$top_option = view3_option(array($top_list['view3_file'],$top_list['view3_file_old'],$board),$top_list['view3_write_day'],$top_list['view3_notice'],$top_list['view3_main'],array($top_list["view3_code"],$top_list['view3_name']),array($top_list['view3_open'],$top_list['view3_close']));
+		$next_command_01 = str_ireplace('<img', '<img onclick="hero_img(this);" style="cursor:pointer;"', view3_html($top_list['view3_command_01']));
+?>
+
+							<div class="slider-container">
+								<ul class="slider-wrapper">
+									<li class="slider-items">
+										<div class="menu_img_area">
+											<!-- <div class="menu_img"><?=str_replace('style="max-width:100%;" ','',$top_option['user_list']);?></div> -->
+                                            <div class="menu_img">
+                                                <img src="<?=$pc?>/upload/menu_01<?=$top_img[2]?>" style="max-width:100%" alt="">
+                                            </div>
+										</div>
+										<div class="menu_txt_area">
+											<p class="board_txt fs_xxl fc_bk"><?=$top_list['view3_title_01'];?></p>
+											<div class="board_txt menu_txt fs_l fc_gy"><?=$next_command_01;?></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<button type="button" id="menuInfoPrev" class="slider-btns slider-prev" data-idx="<?=$temp_prev;?>"<?if(!$temp_prev){echo ' style="display:none"';}?>>이전 페이지로 바로가기</button>
+							<button type="button" id="menuInfoNext" class="slider-btns slider-next" data-idx="<?=$temp_next;?>"<?if(!$temp_next){echo ' style="display:none"';}?>>다음 페이지로 바로가기</button>
+							<button type="button" id="menuInfoX" class="menu_close">메뉴 뷰페이지 닫기</button>
+<?
+	}
+?>
+						</div>
+						<ul class="grid_list">
+                        <?
+                        $sql = "select * from ".TABLE_LEFT."menu_01 where view3_use = 1 {$next_sca} {$next_link} order by view3_order desc,view3_write_day desc";
+                        $res = mysql_query($sql);
+                        while ($lst = mysql_fetch_assoc($res)) {
+                            $img = explode("||",$lst['view3_file']);
+                        ?>
+                            <li class="mt_none ml_none" data-idx="<?=$lst['view3_idx']?>">
+                                <a href="#none">
+                                    <div class="grid_img_area">
+                                        <div class="grid_img" style="background-image:url('<?=$pc?>/upload/menu_01<?=$img[2]?>')" class="w100"></div>
+                                    </div>
+                                    <div class="grid_txt_area">
+                                        <p class="board_txt fc_gy"><?=$lst['view3_title_01']?></p>
+                                    </div>
+                                    <div class="grid_hover_wrap">
+                                        <span class="grid_hover_ico"></span>
+                                    </div>
+                                </a>
+                            </li>
+                        <?
+                        }
+                        ?>
+						</ul>
+						<!-- <ul class="paging"></ul> -->
+					</div>
+				</div>
+        </div>
+<script src="<?=$root?>/js/ResponsiveMenu.js?<?=$time?>"></script>
+<?php
+include_once('../inc/bottom.php');
+?>

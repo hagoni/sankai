@@ -1,0 +1,94 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.r50{position:absolute;right:50%;text-align:right}
+
+.layer1{height:550px}
+.layer1 .lyr1_bg{left:0;top:0;width:100%;height:100%;background-image:url('../img/page/menu/01/lyr1_bg.jpg')}
+.layer1 .lyr1_ttl{top:102px;margin-left:-43px}
+.layer1 .lyr1_text{top:274px;margin-left:90px}
+
+.layer2{height:1650px;z-index:1}
+.layer2 .text{color:#555}
+.layer2 .menu_ttl{padding-bottom:12px;font-family:'Arita-buriSB';font-size:25px;color:#202020}
+.layer2 .box{top:-80px;margin-left:-450px;width:450px;height:450px;padding:123px 0 0 76px;background-color:rgba(255,255,255,0.85);box-sizing:border-box}
+.layer2 .box_ttl{padding-bottom:20px;font-family:'Arita-buriSB';font-size:30px;line-height:150%;color:#202020}
+.layer2 .box_ttl em{font-size:40px;letter-spacing:-0.05em}
+.layer2 .lyr2_img1{top:50px;margin-left:50px}
+.layer2 .lyr2_menu1_img{top:469px;margin-right:13px}
+.layer2 .lyr2_menu1_text{top:514px;margin-right:320px}
+.layer2 .lyr2_menu2_img{top:843px;margin-left:56px}
+.layer2 .lyr2_menu2_text{margin-left:365px;top:874px}
+.layer2 .lyr2_img2{top:1092px;margin-left:50px}
+.layer2 .lyr2_img3{top:800px;margin-left:-650px}
+.layer2 .lyr2_menu3_img{top:1309px;margin-left:-630px}
+.layer2 .lyr2_menu3_text{top:1315px;margin-left:-320px}
+
+.layer3{height:600px}
+.layer3 .lyr3_video{top:50%;margin-left:-1000px;margin-top:-300px;width:2000px;height:600px;background:url('../img/page/menu/01/lyr3_video.jpg')no-repeat center}
+.layer3 .lyr3_ttl{top:159px;margin-left:-43px}
+.layer3 .lyr3_text{top:350px;margin-right:40px}
+@media screen and (min-width: 2000px) {
+    .layer3 .lyr3_video{margin-left:-1280px;margin-top:-384px;width:2560px;height:768px}
+}
+
+.mt-offset{position:absolute;left:0;bottom:300px}
+.shadow{
+  text-shadow: 0 0 5px black, 0 0 5px black, 0 0 5px black, 0 0 5px black, 0 0 5px black, 0 0 5px black, 0 0 5px black;
+}
+</style>
+        <!-- layer1 start -->
+        <div class="layer1 over_h rel m_100 max_1800" data-motion-offset="3">
+            <div class="lyr1_bg abs bg el3_1"></div>
+            <p class="lyr1_ttl l50"><img src="<?=$root?>/img/page/menu/01/lyr1_ttl.png" alt=""></p>
+            <p class="lyr1_text text wt l50">서너 잔의 술을 나누기에 부족함 없는<br>수준 높은 기본 안주를 제공합니다.<br>조리 시간의 기다림이 지루하지 않습니다.</p>
+        </div>
+        <!-- //layer1 end -->
+        <!-- layer2 start -->
+        <div class="layer2 rel">
+            <div class="box l50" data-motion-offset="1">
+                <p class="box_ttl">함께 제공하는<br><em>맛있게 즐기는 방법</em></p>
+                <p class="box_text text">미세한 차이가 <br>요리 본연의 가치를 극대화합니다.<br>작은 것 하나 놓치지 않습니다.<br></p>
+            </div>
+            <div class="el1_1">
+            <div class="lyr2_img1 l50"><img src="<?=$root?>/img/page/menu/01/lyr2_img1.jpg" alt=""></div>
+            <div class="lyr2_menu1_img r50"><img src="<?=$root?>/img/page/menu/01/lyr2_img2.png" alt=""></div>
+            <div class="lyr2_menu1_text r50">
+                <p class="menu_ttl">스키야키</p>
+                <p class="text">익힌 불고기와 신선한 야채를<br>계란 노른자에 찍어서<br>더욱 고소하게 즐기실 수 있습니다.</p>
+            </div>
+            </div>
+            <div class="el2_2">
+                <div class="lyr2_menu2_img l50"><img src="<?=$root?>/img/page/menu/01/lyr2_img4.png" alt=""></div>
+                <div class="lyr2_menu2_text l50">
+                    <p class="menu_ttl">숯불 모둠 꼬치</p>
+                    <p class="text">함께 제공되는 개인 화로에<br> 꼬치를 직접 데워먹을 수 있어서<br> 마지막 잔까지<br>따뜻한 꼬치를 즐기실 수 있습니다.</p>
+                </div>
+                <div class="lyr2_img2 l50"><img src="<?=$root?>/img/page/menu/01/lyr2_img6.jpg" alt=""></div>
+            </div>
+            <div class="el2_1">
+                <div class="lyr2_img3 l50"><img src="<?=$root?>/img/page/menu/01/lyr2_img3.jpg" alt=""></div>
+                <div class="lyr2_menu3_img l50"><img src="<?=$root?>/img/page/menu/01/lyr2_img5.png" alt=""></div>
+                <div class="lyr2_menu3_text l50">
+                    <p class="menu_ttl">사시미</p>
+                    <p class="text">함께 제공되는 가미가 된 밥에<br>회를 얹어 직접 초밥을 만들어 보세요.<br>회도 먹고 초밥도 먹고, 1석 2조!</p>
+                </div>
+            </div>
+            <div class="mt-offset" data-motion-offset="2"></div>
+        </div>
+        <!-- //layer2 end -->
+        <!-- layer3 start -->
+        <div class="layer3 over_h rel">
+            <div class="lyr3_video l50">
+                <iframe src="//player.vimeo.com/video/380644245?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+            <p class="lyr3_ttl l50"><img src="<?=$root?>/img/page/menu/01/lyr3_ttl.png" alt="만족의 온도가 다르다"></p>
+            <p class="lyr3_text text wt r50 shadow">첫 잔부터 마지막 잔의 시간까지<br>요리는 따뜻해야 하고<br>술잔은 시원해야합니다.</p>
+        </div>
+        <!-- //layer3 end -->
+<script src="//player.vimeo.com/api/player.js"></script>
+<script src="<?=$root?>/js/menu_1.js"></script>
+<?php
+include_once('../inc/bottom.php');
+?>

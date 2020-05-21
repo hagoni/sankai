@@ -1,0 +1,43 @@
+/* sub_visual */
+.sub_visual_wrap{padding-top:15.625vw}
+.sub_visual{height:59.375vw;background-repeat:no-repeat;background-position:center;background-size:cover}
+.sub_visual1{background-image:url('../img/sub/sub_visual1.jpg')}
+.sub_visual2{background-image:url('../img/sub/sub_visual2.jpg')}
+.sub_visual3{background-image:url('../img/sub/sub_visual3.jpg')}
+.sub_visual4{background-image:url('../img/sub/sub_visual4.jpg')}
+.sub_visual5{background-image:url('../img/sub/sub_visual5_1.jpg')}
+.sub_visual6{background-image:url('../img/sub/sub_visual6.jpg')}
+
+/* lnb  */
+.lnb_wrap{overflow:hidden;position:absolute;left:0;top:64.0625vw;width:100%;height:10.9375vw;padding-left:6.25vw;background:rgba(212,182,108,0.85);z-index:100;box-sizing:border-box}
+.lnb_wrap li{width:auto;margin-right:12.5vw}
+.lnb_wrap li a{font-family:'Arita-buriM';font-size:3.75vw;line-height:10.9375vw;letter-spacing:-0.05em}
+.lnb_wrap li.on a{font-family:'Arita-buriB'}
+
+/* page_title_area */
+.page_title_area{padding:8.4375vw 0 5.625vw}
+.page_title{font-family:'Arita-buriL';font-size:4.6875vw;letter-spacing:-0.05em;line-height:183%;color:#202020}
+.page_title em{font-family:'Arita-buriSB';font-size:7.0312vw;line-height:122%}
+
+/* tabmenu */
+.tabmenu{padding:0 0 6.25vw;text-align:center}
+.tabmenu li a{display:block;width:29.6875vw;height:9.375vw;margin-left:-1px;line-height:9.375vw;border:1px solid #d4b66c;box-sizing:border-box;font-family:'NotoSansKR-Medium';font-size:3.75vw;color:rgba(32,32,32,0.5);text-align:center}
+.tabmenu li.on a{background:#d4b66c;color:#202020}
+
+/* cmn_paging */
+.cmn_paging{padding:6.25vw 0 9.375vw}
+.cmn_paging li{margin-left:3.125vw}
+.cmn_paging li:first-child{margin-left:0}
+.cmn_paging li a{display:block;width:2.8125vw;height:2.8125vw;border-radius:9px;background:rgba(255,255,255,0.4)}
+.cmn_paging li.swiper-pagination-bullet-active a{width:7.5vw;background:#d4b66c}
+
+/* cmn_Link */
+.cmn_link{display:inline-block;width:31.25vw;height:9.375vw;border:1px solid rgba(255,255,255,0.2);font-family:'NotoSansKR-Light';font-size:3.75vw;line-height:9.375vw;color:#b7b7b7;text-align:center}
+
+/* font */
+.text{font-family:'NotoSansKR-Light';font-size:4.0625vw;line-height:154%;color:#555}
+.text em{font-family:'NotoSansKR-Medium'}
+.stitle{font-family:'Arita-buril';font-size:4.6875vw;line-height:133%;color:#202020}
+.stitle em{font-family:'Arita-buriSB'}
+.title{font-family:'Arita-buril';font-size:6.25vw;letter-spacing:-0.05em;line-height:138%;color:#202020}
+.title em{font-family:'Arita-buriSB'}

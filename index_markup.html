@@ -1,0 +1,284 @@
+<?
+######################################################################################################################################################
+//VIEW3 BOARD 1.0
+######################################################################################################################################################
+define('_VIEW3BOARD_', TRUE);
+define('MAIN_TYPE',													'MAIN',TRUE);
+@include_once														"./view3.php";
+######################################################################################################################################################
+$html_idx = "12";//유저게시판
+######################################################################################################################################################
+$settings_sql = 'SELECT * FROM `'.TABLE_LEFT.'settings` WHERE `key`="info";';
+$settings_query = mysql_query($settings_sql);
+$settings_raw = mysql_fetch_assoc($settings_query);
+$settings_data = unserialize($settings_raw['val']);
+$sitename = htmlentities($settings_data['title'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$description = htmlentities($settings_data['desc'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$keywords = htmlentities($settings_data['keyword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$canonical = htmlentities($settings_data['canonical'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$site_uri = urlencode(PROTOCOL.$_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI]);
+$og_image = $def_og_image;
+######################################################################################################################################################
+$request_root = $root;
+$time = time();
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="naver-site-verification" content="<?=htmlentities($settings_data['naver_webmastertools_key'], ENT_QUOTES | ENT_IGNORE, "UTF-8");?>">
+<meta name="description" content="<?=$description?>">
+<meta name="keywords" content="<?=$keywords?>">
+<meta name="author" content="">
+<meta property="og:title" content="<?=$sitename?>">
+<meta property="og:url" content="<?=$site_uri?>">
+<meta property="og:description" content="<?=$description?>">
+<meta property="og:type" content="website">
+<meta property="og:image" content="<?=$og_image?>">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="<?=$sitename?>">
+<meta name="twitter:url" content="<?=$site_uri?>">
+<meta name="twitter:description" content="<?=$description?>">
+<meta name="twitter:image" content="<?=$og_image?>">
+<meta name="viewport" content="width=1260">
+<title><?=$sitename?></title>
+<link rel="canonical" href="<?=$canonical?>">
+<link rel="shortcut icon" href="<?=$root?>/img/favicon.ico">
+<link rel="stylesheet" href="<?=$root?>/css/style.css?<?=$time?>">
+<link rel="stylesheet" href="<?=$root?>/css/main.css?<?=$time?>">
+</head>
+<body>
+
+<!-- 건너뛰기 링크 시작 -->
+<dl id="skiptoContent">
+	<dt>바로가기 메뉴</dt>
+	<dd><a href="#navigation" class="skip">네비게이션 바로가기</a></dd>
+	<dd><a href="#content" class="skip">본문 바로가기</a></dd>
+</dl>
+<!-- //건너뛰기 링크 끝 -->
+
+<div id="wrap">
+<?php
+include_once('inc/header.php');
+?>
+	<!-- main_visual start -->
+	<div class="main_visual rel h100">
+		<div class="swiper-container h100">
+			<ul class="swiper-wrapper h100">
+				<li class="swiper-slide mv01 h100"></li>
+			</ul>
+		</div>
+		<div class="mv_inner abs h100">
+			<div class="inner_1500 in_1500 h100">
+				<button type="button" class="mv_btns mv_prev">이전</button>
+				<button type="button" class="mv_btns mv_next">다음</button>
+				<ul class="mv_paging fs_def">
+					<li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+					<li><a href="#none"></a></li>
+					<li><a href="#none"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //main_visual end -->
+	<!-- main_content start -->
+	<div class="main_content" id="content">
+		<!-- pride start -->
+		<div class="pride">
+			<div class="inner_1500 in_1500 h100">
+				<div class="title_area h100">
+					<p class="lyr_title"><img src="<?=$root?>/img/main/lyr1_title.png" alt="자부심"></p>
+					<p class="lyr_stitle"><img src="<?=$root?>/img/main/lyr1_stitle.png" alt="여운을 남기다"></p>
+				</div>
+				<div class="cont_area h100">
+					<p class="pride_title">여운을 남기다<br><em>넘치는 요리의 자부심</em></p>
+					<p class="pride_text">어디선가 맛보았던 똑같은 음식이 아닌<br>정통성을 내제한 독창적인<br>안주 요리를 만듭니다.</p>
+					<a href="#none" class="more"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+					<button type="button" class="pride_btns pride_prev">이전</button>
+					<button type="button" class="pride_btns pride_next">다음</button>
+				</div>
+				<div class="pride_slide h100">
+					<div class="swiper-container h100">
+						<ul class="swiper-wrapper h100">
+							<li class="swiper-slide rel h100">
+								<div class="img_area abs"><img src="<?=$root?>/img/main/pride_sl1.png" alt="" class="w100"></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //pride end -->
+		<!-- comfort start -->
+		<div class="comfort">
+			<div class="inner_1500 in_1500 h100">
+				<div class="title_area h100">
+					<p class="lyr_title"><img src="<?=$root?>/img/main/lyr2_title.png" alt="안정성"></p>
+					<p class="lyr_stitle"><img src="<?=$root?>/img/main/lyr2_stitle.png" alt="완성형 이자카야"></p>
+				</div>
+				<div class="cont_area">
+					<ul class="fs_def">
+						<li class="li1">
+							<span class="border"></span>
+							<img src="<?=$root?>/img/main/cf_blank.png" alt="" class="w100">
+							<div class="video_area">
+								<img src="<?=$root?>/img/main/cf_video.jpg" alt="" class="w100">
+							</div>
+							<p class="li_ttl">충족할 수 있는<br>높은 테이블 단가</p>
+							<p class="li_text">50,000원 ~ 53,000원 수준의 테이블<br>단가로 쉽게 높은 매출을 창출합니다.</p>
+							<a href="#none" class="more"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+						</li>
+						<li class="li2">
+							<span class="border"></span>
+							<img src="<?=$root?>/img/main/cf_blank.png" alt="" class="w100">
+							<p class="li_ttl">1년 1회 대규모<br>메뉴 개편 시행하다</p>
+							<p class="li_text">1년간 구축한 메뉴 판매 분석 자료를<br>토대로 불필요한 메뉴는 제외하고<br>신메뉴 출시를 통해 이를 보완합니다.</p>
+							<a href="#none" class="more"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+						</li>
+						<li class="li3">
+							<span class="border"></span>
+							<img src="<?=$root?>/img/main/cf_blank.png" alt="" class="w100">
+							<p class="li_ttl wt">철저한 4주간의 교육,<br>오너셰프가 되다</p>
+							<a href="#none" class="more wt"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+						</li>
+						<li class="li4">
+							<span class="border"></span>
+							<img src="<?=$root?>/img/main/cf_blank.png" alt="" class="w100">
+							<p class="li_ttl wt">따스한 감성이<br>묻어난 목로의 공간</p>
+							<p class="li_text wt">100년 전통 목로 선술집의 따스한<br>감성에 현대적 요소를 결합해<br>산카이만의 세련된 분위기를 만듭니다.</p>
+							<a href="#none" class="more wt"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+						</li>
+						<li class="li5">
+							<span class="border"></span>
+							<img src="<?=$root?>/img/main/cf_blank.png" alt="" class="w100">
+							<p class="li_ttl wt">첫 술을 음미하는<br>조리의 시간</p>
+							<p class="li_text wt">디테일하고 수준 높은<br>기본 안주 서비스를 제공합니다.</p>
+							<a href="#none" class="more wt"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+						</li>
+						<li class="li6">
+							<span class="border"></span>
+							<img src="<?=$root?>/img/main/cf_blank.png" alt="" class="w100">
+							<div class="img_area"><img src="<?=$root?>/img/main/cf_img5.jpg" alt="" class="w100"></div>
+							<p class="li_ttl">6년간의 개선과 검증을<br>통한 완성형 이자카야</p>
+							<p class="li_text">높은 고객 만족도와 효율적인<br>매장 운영을 위한 체계적인 시스템을<br>구축했습니다.</p>
+							<a href="#none" class="more"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- //comfort end -->
+		<!-- main_video start -->
+		<div class="main_video_wrap over_h rel">
+			<div class="main_video l50">
+			</div>
+		</div>
+		<!-- //main_video end -->
+		<!-- smile start -->
+		<div class="smile">
+			<div class="inner_1500 in_1500 h100">
+				<div class="title_area h100">
+					<p class="lyr_title"><img src="<?=$root?>/img/main/lyr4_title.png" alt="미소짓다"></p>
+					<p class="lyr_stitle"><img src="<?=$root?>/img/main/lyr4_stitle.png" alt="사람을 남기다"></p>
+				</div>
+				<div class="cont_area h100">
+					<div class="boxes">
+						<ul class="fs_def">
+							<li class="big_img t_center">
+								<p class="big_ttl">든든한 버팀목이 되어<br>함께 웃겠습니다</p>
+								<p class="big_text">해피서비스를 통한 수준 높은<br>가맹점과의 소통을 지원합니다.</p>
+								<a href="#none" class="big_more more"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr_wt.png" alt=""></span></a>
+							</li>
+							<li class="insta">
+								<ul class="fs_def">
+									<li class="ttl_area">
+										<p class="insta_ttl">#인스타그램</p>
+										<p class="insta_text">#산카이 #요리주점<br>#수작요리 #특선사시미</p>
+										<a href="#none" class="more"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+									</li>
+									<li class="insta_img"><a href="#none" class="insta_a" style="background-image:url('img/main/smile_img2.jpg')"></a></li>
+									<li class="insta_img"><a href="#none" class="insta_a" style="background-image:url('img/main/smile_img3.jpg')"></a></li>
+									<li class="insta_img"><a href="#none" class="insta_a" style="background-image:url('img/main/smile_img4.jpg')"></a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="news over_h">
+						<div class="ttl_area f_left">
+							<p class="news_ttl">다양한 <em>소식</em>을<br>확인하세요</p>
+							<a href="#none" class="more"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+						</div>
+						<ul class="list_area f_right">
+							<li>
+								<a href="#none">
+									<p class="list_ttl ellipsis">산카이 홈페이지를 리뉴얼 오픈했습니다.</p>
+									<p class="list_date">2019.10.14</p>
+								</a>
+							</li>
+							<li>
+								<a href="#none">
+									<p class="list_ttl ellipsis">산카이 홈페이지를 리뉴얼 오픈했습니다. 산카이 홈페이지를 리뉴얼 오픈했습니다. 산카이 홈페이지를 리뉴얼 오픈했습니다. 산카이 홈페이지를 리뉴얼 오픈했습니다.</p>
+									<p class="list_date">2019.10.14</p>
+								</a>
+							</li>
+							<li>
+								<a href="#none">
+									<p class="list_ttl ellipsis">산카이 홈페이지를 리뉴얼 오픈했습니다.</p>
+									<p class="list_date">2019.10.14</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //smile end -->
+	</div>
+	<!-- //main_content end -->
+<?php
+include_once('inc/footer.php');
+?>
+</div>
+
+<script>
+var CONST_REQUEST_ROOT = '<?=$request_root?>';
+var CONST_ROOT = '<?=$root?>';
+var CONST_SITENAME = '<?=str_replace(' ', '', $sitename)?>';
+</script>
+<script src="<?=$root?>/js/jquery-1.12.0.min.js"></script>
+<script src="<?=$root?>/freebest/inquiry.js"></script>
+<script src="<?=$root?>/js/common.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/main.js?<?=$time?>"></script>
+<?
+@include_once(BOARD_INC.'/view3_popup_01/list.php');
+@include_once(BOARD_INC.'/view3_popup_02/list.php');
+@include_once(BOARD_INC.'/view3_popup_03/list.php');
+@include_once(BOARD_INC.'/view3_popup_04/list.php');
+?>
+<script>
+(function($) {
+	$(document).ready(function() {
+		function popupCallback() {
+			setTimeout(function() {
+
+			}, 400);
+		}
+		new Popup('type02', {
+			callback: popupCallback
+		});
+		new Popup('type03', {
+			callback: popupCallback
+		});
+		new Popup('type04', {
+			callback: popupCallback
+		});
+	});
+}(jQuery));
+</script>
+<?
+@include_once(ROOT_INC.'/statistics_include.php');
+?>
+
+</body>
+</html>

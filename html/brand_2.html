@@ -1,0 +1,118 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.left_area{position:absolute;right:50%;margin-right:100px;text-align:right}
+.right_area{position:absolute;left:50%;margin-left:100px}
+.lyr_ttl{font-family:'Arita-buriSB';font-size:25px;color:#202020}
+.text{color:#555}
+
+.layer1{height:500px;background-image:url('../img/page/brand/02/lyr1_bg.jpg')}
+
+.layer2{height:940px;box-sizing:border-box}
+.layer2 .center_ttl{position:absolute;left:50%;margin-left:-23px;top:256px;z-index:1}
+.layer2 .center_ttl .line_top{position:absolute;left:50%;top:-336px;width:1px;height:296px;background-color:rgba(0,0,0,0.2)}
+.layer2 .center_ttl .line_bot{position:absolute;left:50%;top:461px;width:1px;height:465px;background-color:rgba(0,0,0,0.2)}
+.layer2 .lyr2_dec{top:187px;margin-left:357px}
+.layer2 .left_area{top:144px}
+.layer2 .right_area{top:100px}
+.layer2 .lyr2_stext{padding-bottom:42px;font-family:'NotoSansKR-Light';font-size:20px;line-height:170%;color:#555}
+.layer2 .lyr2_stext em{font-family:'NotoSansKR-Medium'}
+.layer2 .lyr_ttl{padding:45px 0 25px}
+.layer2 .text{padding-bottom:30px}
+.layer2 .lyr2_video{width:470px;height:370px}
+
+.layer3{height:880px;background-image:url('../img/page/brand/02/lyr3_bg.png')}
+.layer3 .center_ttl{position:absolute;left:50%;margin-left:-23px;top:269px;z-index:1}
+.layer3 .center_ttl .line_bot{position:absolute;left:50%;top:369px;width:1px;height:252px;background-color:rgba(0,0,0,0.2)}
+.layer3 .left_area{top:153px}
+.layer3 .right_area{top:70px}
+.layer3 .lyr3_text1{padding:24px 0 30px}
+.layer3 .lyr3_img1{margin-top:126px}
+.layer3 .lyr3_img2{margin-bottom:123px}
+.layer3 .lyr3_text2{padding:23px 0 32px}
+
+.layer4{height:520px;box-sizing:border-box}
+.layer4 .lyr4_video{position:absolute;top:50%;left:50%;width:1734px;height:520px;overflow:hidden;
+-webkit-transform:translate(-50%,-50%);
+transform:translate(-50%,-50%)
+}
+.lyr4_video .video_wrap{position:absolute;top:50%;left:50%;width:100%;padding-top:30%;background:url('../img/page/brand/02/lyr4_video.jpg')no-repeat center;background-size:cover;
+-webkit-transform:translate(-50%,-50%);
+transform:translate(-50%,-50%)
+}
+.lyr4_video .video_inner{position:absolute;top:0;left:0;width:100%;height:100%}
+@media (min-width:1740px){
+    .layer4 .lyr4_video{width:100%}
+}
+.layer4 .text_area{position:relative;z-index:1}
+.layer4 .lyr4_ttl{padding:156px 0 32px}
+.layer4 .lyr4_ttl .line_top{position:absolute;left:50%;top:0;width:1px;height:138px;background-color:rgba(255,255,255,0.2)}
+</style>
+        <div class="over_h">
+            <!-- layer1 start -->
+            <div class="layer1 m_100 max_1800 bg"></div>
+            <!-- //layer1 end -->
+            <!-- layer2 start -->
+            <div class="layer2 rel">
+                <p class="center_ttl"><span class="line_top el1_1"></span><span class="line_bot el2_1"></span><img src="<?=$root?>/img/page/brand/02/lyr2_ttl.png" alt="2013년의 어느 여름"></p>
+                <div class="lyr2_dec l50"><img src="<?=$root?>/img/page/brand/02/lyr2_dec.png" alt=""></div>
+                <div class="left_area">
+                    <p class="lyr2_stext"><em>요리에 대한 자부심</em>으로 산카이의 시작을 열었고<br>어느덧 6년이라는 긴 시간이 지났습니다.</p>
+                    <div class="el1_2">
+                        <div class="lyr2_video">
+                            <iframe src="//player.vimeo.com/video/380644310?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                        <div data-motion-offset="1"></div>
+                        <p class="lyr_ttl">다양한 개선과 검증 반복</p>
+                        <p class="lyr2_text1 text">산카이는 6년간의 지속적인 성장을 했고<br>그로 인해 10년 이상 운영할 수 있는<br>안정성을 검증했습니다.</p>
+                        <a href="<?=$root?>/html/fran.html#7" class="more"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+                    </div>
+                </div>
+                <div class="right_area el1_3">
+                    <div class="lyr2_img"><img src="<?=$root?>/img/page/brand/02/lyr2_img.jpg" alt=""></div>
+                    <p class="lyr_ttl">체계적인 시스템 구축</p>
+                    <p class="lyr2_text2 text">높은 고객 만족도와<br>효율적인 매장 운영을 위한<br>체계적인 시스템을 구축했습니다.</p>
+                    <a href="<?=$root?>/html/fran.html#6" class="more"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+                </div>
+            </div>
+            <!-- //layer2 end -->
+            <!-- layer3 start -->
+            <div class="layer3 rel m_100 max_1800 bg">
+                <p class="center_ttl"><span class="line_bot el3_1"></span><img src="<?=$root?>/img/page/brand/02/lyr3_ttl.png" alt="함께 웃었습니다"></p>
+                <div class="left_area el2_2">
+                    <p class="lyr_ttl">섬세한 디테일의 감동</p>
+                    <p class="lyr3_text1 text">디테일한 감동으로<br>고객과 함께 웃었습니다.</p>
+                    <a href="<?=$root?>/html/menu_1.html" class="more"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+                    <div class="lyr3_img1"><img src="<?=$root?>/img/page/brand/02/lyr3_img1.jpg" alt=""></div>
+                </div>
+                <div class="right_area el2_3">
+                    <div class="lyr3_img2"><img src="<?=$root?>/img/page/brand/02/lyr3_img2.jpg" alt=""></div>
+                    <p class="lyr_ttl">안정성 있는 브랜드</p>
+                    <p class="lyr3_text2 text">안정적인 운영으로<br>사장님과 함께 웃었습니다</p>
+                    <a href="<?=$root?>/html/fran.html#7" class="more"><span class="more_text">more</span><span class="more_arr"><img src="<?=$root?>/img/main/more_arr.png" alt=""></span></a>
+                </div>
+                <div data-motion-offset="2"></div>
+            </div>
+            <!-- //layer3 end -->
+            <!-- layer4 start -->
+            <div class="layer4 rel" data-motion-offset="3">
+                <div class="lyr4_video">
+                    <div class="video_wrap">
+                        <div class="video_inner">
+                            <iframe src="//player.vimeo.com/video/383468763?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&muted=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="text_area t_center">
+                    <p class="lyr4_ttl rel"><span class="line_top el3_2"></span><img src="<?=$root?>/img/page/brand/02/lyr4_ttl.png" alt="완성형 이자카야 산카이에는 그렇게 사람이 남았습니다."></p>
+                    <p class="text wt">이자카야 요리 주점 산카이는 반짝 유행하는 브랜드와 달리<br><em>유행을 타지 않고 지속적으로 성장하고 있는 안정성 있는 브랜드</em>입니다.</p>
+                </div>
+            </div>
+            <!-- //layer4 end -->
+        </div>
+<script src="//player.vimeo.com/api/player.js"></script>
+<script src="<?=$root?>/js/brand_2.js"></script>
+<?php
+include_once('../inc/bottom.php');
+?>

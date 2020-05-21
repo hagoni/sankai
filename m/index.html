@@ -1,0 +1,373 @@
+<?
+######################################################################################################################################################
+//VIEW3 BOARD 1.0
+######################################################################################################################################################
+define('_VIEW3BOARD_', TRUE);
+define('MAIN_TYPE',													'MAIN',TRUE);
+@include_once														"../view3.php";
+######################################################################################################################################################
+$html_idx = "12";//유저게시판
+######################################################################################################################################################
+$settings_sql = 'SELECT * FROM `'.TABLE_LEFT.'settings` WHERE `key`="info";';
+$settings_query = mysql_query($settings_sql);
+$settings_raw = mysql_fetch_assoc($settings_query);
+$settings_data = unserialize($settings_raw['val']);
+$sitename = htmlentities($settings_data['title'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$description = htmlentities($settings_data['desc'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$keywords = htmlentities($settings_data['keyword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$canonical = htmlentities($settings_data['canonical'], ENT_QUOTES | ENT_IGNORE, "UTF-8").$_SERVER[REQUEST_URI];
+$site_uri = urlencode(PROTOCOL.$_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI]);
+$og_image = $def_og_image;
+######################################################################################################################################################
+$request_root = $pc;
+$time = time();
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="naver-site-verification" content="<?=htmlentities($settings_data['naver_webmastertools_key'], ENT_QUOTES | ENT_IGNORE, "UTF-8");?>">
+<meta name="description" content="<?=$description?>">
+<meta name="keywords" content="<?=$keywords?>">
+<meta name="author" content="">
+<meta property="og:title" content="<?=$sitename?>">
+<meta property="og:url" content="<?=$site_uri?>">
+<meta property="og:description" content="<?=$description?>">
+<meta property="og:type" content="website">
+<meta property="og:image" content="<?=$og_image?>">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="<?=$sitename?>">
+<meta name="twitter:url" content="<?=$site_uri?>">
+<meta name="twitter:description" content="<?=$description?>">
+<meta name="twitter:image" content="<?=$og_image?>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title><?=$sitename?></title>
+<link rel="canonical" href="<?=$canonical?>">
+<link rel="shortcut icon" href="<?=$root?>/img/favicon.ico">
+<link rel="apple-touch-icon" href="<?=$root?>/img/apple-touch-icon.png">
+<link rel="stylesheet" href="<?=$root?>/css/style.css?<?=$time?>">
+<link rel="stylesheet" href="<?=$root?>/css/main.css?<?=$time?>">
+</head>
+<body>
+
+<!-- 건너뛰기 링크 시작 -->
+<dl id="skiptoContent">
+	<dt>바로가기 메뉴</dt>
+	<dd><a href="#navigation" class="skip">네비게이션 바로가기</a></dd>
+	<dd><a href="#content" class="skip">본문 바로가기</a></dd>
+</dl>
+<!-- //건너뛰기 링크 끝 -->
+
+<div id="wrap">
+<?php
+include_once('inc/header.php');
+?>
+	<div class="main_content" id="content">
+		<div class="main_visual">
+			<div class="swiper-container">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide bg1 bg">
+						<a href="#none">
+						</a>
+					</li>
+					<li class="swiper-slide bg2 bg">
+						<a href="<?=$root?>/html/brand_1.html">
+						</a>
+					</li>
+					<li class="swiper-slide bg3 bg">
+						<a href="<?=$root?>/board/index.php?board=interior_01&sca=interior">
+						</a>
+					</li>
+				</ul>
+			</div>
+			<ul class="mv_paging">
+	            <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+	            <li><a href="#none"></a></li>
+				<li><a href="#none"></a></li>
+	        </ul>
+		</div>
+		<div class="category">
+			<ul class="category_list fs_def">
+				<li><a href="<?=$root?>/html/brand_1.html">브랜드</a></li>
+				<li><a href="<?=$root?>/html/menu_1.html">메뉴</a></li>
+				<li><a href="<?=$root?>/html/fran.html">창업</a></li>
+			</ul>
+		</div>
+		<div class="pride rel">
+			<div class="lyr_ttl_wrap">
+				<div class="t_center">
+					<p class="layer_sttl">여운을 남기다</p>
+				</div>
+				<p class="layer_ttl">자부심</p>
+			</div>
+			<div class="pride_space"></div>
+			<div class="pride_slide w100 h100">
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+						<li class="swiper-slide">
+							<img src="<?=$root?>/img/main/pride_sl1.png" alt="" class="w100">
+							<div class="text_wrap">
+								<p class="mttl t_center">
+									여운을 남기다<br>
+									<em>넘치는 요리의 자부심</em>
+								</p>
+								<p class="mtext t_center">
+									어디선가 맛보았던 똑같은 음식이 아닌<br>
+									정통성을 내제한 독창적인 안주 요리를 만듭니다.
+								</p>
+								<p class="more_wrap t_center">
+									<a href="<?=$root?>/html/brand_1.html" class="more_link">
+										more <span class="more_arr"></span>
+									</a>
+								</p>
+							</div>
+						</li>
+						<li class="swiper-slide">
+							<img src="<?=$root?>/img/main/pride_sl2.png" alt="" class="w100">
+							<div class="text_wrap">
+								<p class="mttl t_center">
+									이야기를 나누는<br>
+									<em>은은한 공간</em>
+								</p>
+								<p class="mtext t_center">
+									한 잔의 술과 진솔한 이야기를 나누는<br>
+									은은한 공간 산카이 입니다.
+								</p>
+								<p class="more_wrap t_center">
+									<a href="<?=$root?>/board/index.php?board=interior_01&sca=interior#3" class="more_link">
+										more <span class="more_arr"></span>
+									</a>
+								</p>
+							</div>
+						</li>
+						<li class="swiper-slide">
+							<img src="<?=$root?>/img/main/pride_sl3.png" alt="" class="w100">
+							<div class="text_wrap">
+								<p class="mttl t_center">
+									만족의<br>
+									<em>온도가 다르다</em>
+								</p>
+								<p class="mtext t_center">
+									첫 잔부터 마지막 잔의 시간까지<br>
+									요리는 따뜻해야 하고 술자은 시원해야 합니다.
+								</p>
+								<p class="more_wrap t_center">
+									<a href="<?=$root?>/html/menu_1.html" class="more_link">
+										more <span class="more_arr"></span>
+									</a>
+								</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<button type="button" class="pride_btns pride_prev">이전</button>
+				<button type="button" class="pride_btns pride_next">다음</button>
+			</div>
+		</div>
+		<div class="comfort">
+			<div class="lyr_ttl_wrap">
+				<div class="t_center">
+					<p class="layer_sttl">완성형 이자카야</p>
+				</div>
+				<p class="layer_ttl">안정성</p>
+			</div>
+			<div class="comfort_slide inner">
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+						<li class="swiper-slide swiper-slide-active">
+							<div class="sl_inner">
+								<img src="<?=$root?>/img/main/comfort_sl1.jpg" alt="" class="w100">
+								<div class="text_box">
+									<div class="va_m">
+										<p class="mttl t_center">
+											<em>충족할 수 있는<br>
+											높은 테이블 단가</em>
+										</p>
+										<p class="mtext t_center">
+											50,000원 ~ 53,000원 수준의 테이블 <br>
+											단가로 쉽게 높은 매출을 창출합니다.
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="swiper-slide">
+							<div class="sl_inner">
+								<img src="<?=$root?>/img/main/comfort_sl2.jpg" alt="" class="w100">
+								<div class="text_box">
+									<div class="va_m">
+										<p class="mttl t_center">
+											<em>1년 1회 대규모<br>
+											메뉴 개편 시행하다</em>
+										</p>
+										<p class="mtext t_center">
+											1년간 구축한 메뉴 판매 분석 자료를<br>
+											토대로 불필요한 메뉴는 제외하고<br>
+											신메뉴 출시를 통해 이를 보완합니다.
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="swiper-slide">
+							<div class="sl_inner">
+								<img src="<?=$root?>/img/main/comfort_sl3.jpg" alt="" class="w100">
+								<div class="text_box">
+									<div class="va_m">
+										<p class="mttl t_center">
+											<em>철저한 4주간의 교육,<br>
+											오너셰프가 되다</em>
+										</p>
+										<p class="mtext t_center">
+											철저한 오너셰프 교육과<br>
+											간소화된 조리 시스템을 제공합니다.
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="swiper-slide">
+							<div class="sl_inner">
+								<img src="<?=$root?>/img/main/comfort_sl4.jpg" alt="" class="w100">
+								<div class="text_box">
+									<div class="va_m">
+										<p class="mttl t_center">
+											<em>따스한 감성이<br>
+											묻어난 목로의 공간</em>
+										</p>
+										<p class="mtext t_center">
+											100년 전통 목로 선술집의 따스한<br>
+											감성에 현대적 요소를 결합해<br>
+											산카이만의 세련된 분위기를 만듭니다.
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="swiper-slide">
+							<div class="sl_inner">
+								<img src="<?=$root?>/img/main/comfort_sl5.jpg" alt="" class="w100">
+								<div class="text_box">
+									<div class="va_m">
+										<p class="mttl t_center">
+											<em>첫 술을 음미하는<br>
+											조리의 시간</em>
+										</p>
+										<p class="mtext t_center">
+											디테일하고 수준 높은<br>
+											기본 안주 서비스를 제공합니다.
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="swiper-slide">
+							<div class="sl_inner">
+								<img src="<?=$root?>/img/main/comfort_sl6.jpg" alt="" class="w100">
+								<div class="text_box">
+									<div class="va_m">
+										<p class="mttl t_center">
+											<em>6년간의 개선과 검증을<br>
+											통한 완성형 이자카야</em>
+										</p>
+										<p class="mtext t_center">
+											높은 고객 만족도와 효율적인<br>
+											매장 운영을 위한 체계적인 시스템을<br>
+											구축했습니다.
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<ul class="comfort_paging fs_def t_center">
+                    <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+                    <li><a href="#none"></a></li>
+					<li><a href="#none"></a></li>
+					<li><a href="#none"></a></li>
+                </ul>
+			</div>
+		</div>
+		<div class="main_video_wrap bg">
+			<p class="mttl t_center">
+				<em>해피서비스</em>
+			</p>
+			<p class="mtext t_center">
+				해피서비스를 통한 수준 높은<br>
+				가맹점과의 소통을 지원합니다.
+			</p>
+			<p class="more_wrap t_center">
+				<a href="<?=$root?>/html/fran.html#6" class="more_link">
+					more <span class="more_arr white"></span>
+				</a>
+			</p>
+		</div>
+		<div class="sns">
+			<div class="sns_wrap inner">
+				<div class="lyr_ttl_wrap">
+					<div class="t_center">
+						<p class="layer_sttl">#인스타그램</p>
+					</div>
+				</div>
+				<div class="sns_slide">
+					<div class="swiper-container">
+						<ul class="swiper-wrapper">
+							<!-- <li class="swiper-slide">
+								<div class="sns_img bg" style="background-image:url('<?=$root?>/img/main/sns_sl1.jpg')"></div>
+							</li>
+							<li class="swiper-slide">
+								<div class="sns_img bg" style="background-image:url('<?=$root?>/img/main/sns_sl2.jpg')"></div>
+							</li>
+							<li class="swiper-slide">
+								<div class="sns_img bg" style="background-image:url('<?=$root?>/img/main/sns_sl3.jpg')"></div>
+							</li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php
+include_once('inc/footer.php');
+include_once('inc/sitemap.php');
+?>
+</div>
+
+<script>
+var CONST_REQUEST_ROOT = '<?=$pc?>';
+var CONST_ROOT = '<?=$root?>';
+var CONST_SITENAME = '<?=str_replace(' ', '', $sitename)?>';
+</script>
+<script src="<?=$root?>/js/jquery-1.12.0.min.js"></script>
+<script src="<?=$pc?>/freebest/inquiry.js"></script>
+<script src="<?=$root?>/js/common.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/main.js"></script>
+<?
+@include_once(BOARD_INC.'/view3_popup_01/list.php');
+@include_once(BOARD_INC.'/view3_popup_02/list.php');
+?>
+<script>
+(function($) {
+	$(document).ready(function() {
+		function popupCallback() {
+			setTimeout(function() {
+
+			}, 400);
+		}
+		new Popup('m_type01', {
+			callback: popupCallback
+		});
+		new Popup('m_type02', {
+			callback: popupCallback
+		});
+	});
+}(jQuery));
+</script>
+<?
+@include_once(ROOT_INC.'/statistics_include.php');
+?>
+
+</body>
+</html>

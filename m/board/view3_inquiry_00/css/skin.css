@@ -1,0 +1,74 @@
+.page_text{display:none}
+
+#boardWrap{width:90.625vw;margin:0 auto;padding-bottom:10.9375vw}
+
+.iqr_policy_wrap{position:relative;padding-bottom:6%}
+.iqr_tit{width:100%;font-family:'NotoSansKR-Medium';font-size:4.6875vw;letter-spacing:-0.02em;color:#000}
+.iqr_policy{position:relative;margin:2% 0 1%;border:1px solid #ebebeb}
+.iqr_policy > ol{padding:3% 4%}
+.iqr_policy > ol > li{margin-top:2%}
+.iqr_policy > ol > li:first-child{margin-top:0}
+.iqr_check{padding-left:3.90625vw;background-color:rgba(255,255,255,0.2);border:1px solid #aaa}
+.iqr_check:after{content:'';display:block;clear:both}
+.iqr_check > input{overflow:hidden;position:absolute;width:0.1px;height:0.1px;opacity:0;z-index:-1}
+.iqr_check > label{display:inline-block;width:7.8125vw;height:7.8125vw;margin-right:1.625vw;background:url('../img/check.png') no-repeat 0 0;background-size:7.8125vw 15.625vw;vertical-align:middle}
+.iqr_check > input:checked + label{background-position:0 -7.8125vw}
+.open_policy{display:inline-block;font-size:3.4375vw;letter-spacing:-0.02em;line-height:15.625vw;color:#1c1c1c}
+.open_policy em{position:relative;font-family:'NotoSansKR-Bold';color:#1c1c1c}
+.open_policy em:before{content:'';position:absolute;left:0;bottom:-2px;width:100%;height:1px;background-color:#1c1c1c}
+
+.iqr_dot{position:relative;margin-left:10px;padding-left:10px;font-size:0.65em}
+.iqr_dot:before{content:'';position:absolute;left:0;top:40%;width:6px;height:6px;background:url('../img/inquiry_dot.png') no-repeat}
+.iqr_dot > span{font-size:0}
+
+.inquiry_fields{margin-top:7.8125vw}
+.inquiry_fields li{padding-bottom:3.125vw}
+.inquiry_fields li:after{content:'';display:block;clear:both}
+.field_title{position:relative;float:left;width:28.125vw;font-size:3.4375vw;line-height:9.375vw;letter-spacing:-0.02em;color:#1c1c1c;padding-left:10px;box-sizing:border-box;color:#1c1c1c}
+.field_title.required:before{content:'';position:absolute;left:0;top:50%;width:6px;height:6px;margin-top:-3px;background:url('../img/inquiry_dot.png') no-repeat}
+.inquiry_fields input[type="text"], .inquiry_fields select{float:left;width:calc(100% - 28.125vw);height:9.375vw;padding:0 2.34375vw;border:1px solid #aaa;font-size:3.125vw;line-height:9.375vw;letter-spacing:-0.05em;color:#666;-webkit-appearance:none;border-radius:0;background:none;background-color:rgba(255,255,255,0.2);
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+-ms-box-sizing:border-box;
+-o-box-sizing:border-box;
+box-sizing:border-box;
+}
+.email_wrap{position:relative;height:25px;margin-bottom:2%}
+.inquiry_fields input[type="text"].half_input01{padding-right:6%}
+.inquiry_fields input[type="text"].half_input02{float:right;width:calc(50% - 14.0625vw);border-top:0;border-right:0}
+.email_ico{position:absolute;right:3vw;top:0;width:6%;font-size:3.75vw;line-height:9.375vw;color:#666;text-align:center}
+.inquiry_fields select#email_03{float:right;width:calc(50% - 14.0625vw);border-top:0}
+.input_radio label{display:block;font-size:3.125vw;color:#666;line-height:9.375vw;letter-spacing:-0.02em;background-color:rgba(255,255,255,0.2);border:1px solid #aaa;border-right:0;box-sizing:border-box;text-align:center}
+.input_radio:last-child label{border-right:1px solid #aaa}
+.input_comment{position:relative;float:left;width:calc(100% - 28.125vw)}
+.inquiry_fields .input_comment input[type="text"]{width:30vw}
+.input_comment .text{position:absolute;right:9vw;top:0;font-size:3.125vw;line-height:9.375vw;color:#666}
+.input_radio{float:left;width:31.25vw;height:9.375vw}
+.radio4 .input_radio{width:calc((100% - 28.125vw) / 4)}
+.input_radio input{overflow:hidden;position:absolute;opacity:0;z-index:-1;width:0.1px;height:0.1px}
+.input_radio input:checked + label{background:#222;color:#fff}
+.inquiry_fields textarea{width:calc(100% - 28.125vw);height:31.25vw;padding:5px;border:1px solid #aaa;background:none;background-color:rgba(255,255,255,0.2);font-family:'NotoSansKR-DemiLight';font-size:3.125vw;line-height:150%;letter-spacing:-0.05em;color:#444;border-radius:0;resize:none;
+-webkit-appearance:none;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+-ms-box-sizing:border-box;
+-o-box-sizing:border-box;
+box-sizing:border-box;
+}
+.inquiry_fields select#email_03{
+-webkit-appearance: none; /* 화살표 없애기 for chrome*/
+-moz-appearance: none;    /* 화살표 없애기 for firefox*/
+appearance: none;         /* 화살표 없애기 공통*/
+background: rgba(255,255,255,0.2) url('../img/email_sel.png') no-repeat 90% 50%; /* 화살표 아이콘 추가 */
+background-size:2.1875vw
+}
+.inquiry_fields select#email_03::-ms-expand {
+   display: none;         /* 화살표 없애기 for IE10, 11*/
+}
+.b_btn01{width:40.625vw;height:10.9375vw;background-color:#d4b66c;font-size:4.6875vw;font-family:'Arita-buriB';letter-spacing:-0.025em;color:#000}
+
+/* .input_radio_l{width:calc(50% - 13.28125vw)} */
+.input_radio #iqr_special_05_01 + label{width:100%}
+.input_radio #iqr_special_05_02 + label{width:100%}
+
+.b_c_m{color:#231815}

@@ -1,0 +1,1420 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.popup{position:fixed;top:50%;left:50%;margin-top:-270px;margin-left:-400px;width:800px;height:540px;padding:50px 35px 0 30px;box-sizing:border-box;background:rgba(0,0,0,0.9);z-index:1000}
+.popup .over_s{width:100%;height:460px;overflow-y:scroll}
+.popup .pop_img{width:310px;height:460px;}
+.popup .pop_img img{width:100%;}
+.pop_textwrap{width:350px;padding-left:30px;color:#fff}
+.pop_textwrap .pop_ttl{padding-bottom:6px;border-bottom:1px solid #919191}
+.pop_textwrap .pop_store{font-family:'NotoSansKR-Bold';font-size:20px;line-height:140%;letter-spacing:-0.05em;color:#fff}
+.pop_textwrap .pop_day{padding-left:30px;font-family:'NotoSansKR-Light';font-size:14px;line-height:179%;letter-spacing:-0.05em;color:#fff;vertical-align:bottom}
+.pop_textwrap .pop_subttl{font-family:'NotoSansKR-Bold';font-size:20px;line-height:140%;letter-spacing:-0.05em;color:#fff}
+.pop_textwrap .pop_text{padding-top:14px;font-family:'NotoSansKR-Regular';font-size:14px;line-height:186%;letter-spacing:-0.05em;color:#fff}
+.popup .pop_close{position:absolute;top:26px;right:30px;width:25px;height:25px;background-image:url('../img/common/pop_close.jpg')}
+
+
+.popup .pop_video{width:100%;height:460px;}
+.pop_videowrap{width:100%;color:#fff}
+.pop_videowrap .pop_ttl{padding-bottom:6px;border-bottom:1px solid #919191}
+.pop_videowrap .pop_store{font-family:'NotoSansKR-Bold';font-size:20px;line-height:140%;letter-spacing:-0.05em;color:#fff}
+.pop_videowrap .pop_day{padding-left:30px;font-family:'NotoSansKR-Light';font-size:14px;line-height:179%;letter-spacing:-0.05em;color:#fff;vertical-align:bottom}
+.pop_videowrap .pop_subttl{font-family:'NotoSansKR-Bold';font-size:20px;line-height:140%;letter-spacing:-0.05em;color:#fff}
+.pop_videowrap .pop_text{padding-top:14px;font-family:'NotoSansKR-Regular';font-size:14px;line-height:186%;letter-spacing:-0.05em;color:#fff}
+</style>
+<?
+if ($_POST['idx'] && $_POST['key'] == 1) {
+    $pop_sql = "select * from ".TABLE_LEFT."success_01 where view3_idx = {$_POST['idx']}";
+    $pop_res = mysql_query($pop_sql);
+    $pop_lst = mysql_fetch_assoc($pop_res);
+    $pop_img = explode("||",$pop_lst['view3_file']);
+?>
+<div class="modal_pop" id="modal_pop">
+    <div class="popup" id="popup">
+        <div class="over_s fs_def">
+        <?
+        if ($pop_lst['view3_link'] != "") {
+            if ($pop_lst['view3_video'] == 'YouTube') {
+            ?>
+                <div class="pop_videowrap">
+                    <div class="pop_ttl">
+                        <div class="pop_ttltop fs_def">
+                            <p class="pop_store"><?=$pop_lst['view3_title_01']?></p><p class="pop_day"><?=date('Y-m-d',strtotime($pop_lst['view3_write_day']))?></p>
+                        </div>
+                        <p class="pop_subttl"><?=$pop_lst['view3_title_02']?></p>
+                        <div class="pop_video">
+                            <iframe width="98%" height="100%" src="https://www.youtube.com/embed/<?=$pop_lst['view3_link']?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="pop_text"><?=htmlspecialchars_decode($pop_lst['view3_command_01'])?></div>
+                </div>
+            <?
+            } else if ($pop_lst['view3_video'] == 'Vimeo'){
+            ?>
+                <div class="pop_videowrap">
+                    <div class="pop_ttl">
+                        <div class="pop_ttltop fs_def">
+                            <p class="pop_store"><?=$pop_lst['view3_title_01']?></p><p class="pop_day"><?=date('Y-m-d',strtotime($pop_lst['view3_write_day']))?></p>
+                        </div>
+                        <p class="pop_subttl"><?=$pop_lst['view3_title_02']?></p>
+                        <div class="pop_video">
+                            <iframe src="https://player.vimeo.com/video/<?=$pop_lst['view3_link']?>" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="pop_text"><?=htmlspecialchars_decode($pop_lst['view3_command_01'])?></div>
+                </div>
+            <?
+            }
+        } else {
+        ?>
+            <div class="pop_img">
+                <img src="<?=$root?>/upload/success_01<?=$pop_img[2]?>" alt="">
+            </div>
+            <div class="pop_textwrap">
+                <div class="pop_ttl">
+                    <div class="pop_ttltop fs_def">
+                        <p class="pop_store"><?=$pop_lst['view3_title_01']?></p><p class="pop_day"><?=date('Y-m-d',strtotime($pop_lst['view3_write_day']))?></p>
+                    </div>
+                    <p class="pop_subttl"><?=$pop_lst['view3_title_02']?></p>
+                </div>
+                <div class="pop_text"><?=htmlspecialchars_decode($pop_lst['view3_command_01'])?></div>
+            </div>
+        <?
+        }
+        ?>
+
+        </div>
+        <button type="button" class="pop_close"></button>
+    </div>
+</div>
+<?
+}
+?>
+<?
+if ($_POST['idx'] && $_POST['key'] == 2) {
+    $pop_happy_sql = "select * from ".TABLE_LEFT."success_01 where view3_idx = {$_POST['idx']}";
+    $pop_happy_res = mysql_query($pop_happy_sql);
+    $pop_happy_lst = mysql_fetch_assoc($pop_happy_res);
+    $pop_happy_img = explode("||",$po_happy_lst['view3_file']);
+?>
+<div class="modal_pop" id="modal_pop">
+    <div class="popup" id="popup">
+        <div class="over_s fs_def">
+            <div class="pop_img">
+                <img src="<?=$root?>/upload/success_01<?=$pop_happy_img[2]?>" alt="">
+            </div>
+            <div class="pop_textwrap">
+                <div class="pop_ttl">
+                    <div class="pop_ttltop fs_def">
+                        <p class="pop_store"><?=$pop_happy_lst['view3_title_01']?></p><p class="pop_day"><?=date('Y-m-d',strtotime($pop_happy_lst['view3_write_day']))?></p>
+                    </div>
+                    <p class="pop_subttl"><?=$pop_happy_lst['view3_title_02']?></p>
+                </div>
+                <div class="pop_text"><?=htmlspecialchars_decode($pop_happy_lst['view3_command_01'])?></div>
+            </div>
+        </div>
+        <button type="button" class="pop_close"></button>
+    </div>
+</div>
+<?
+}
+?>
+        <!-- fran_bnr start -->
+        <div class="fran_bnr_wrap bg rel chapters">
+            <div class="inner h100">
+                <div class="banner_ttl"><img src="<?=$root?>/img/page/fran/banner_ttl.png" alt="성공사례"></div>
+                <div class="bnr_slide">
+                    <div class="swiper-container">
+                        <ul class="swiper-wrapper">
+        <?
+        $suc_sql = "select * from ".TABLE_LEFT."success_01 where view3_use = 1 order by view3_order desc, view3_write_day desc";
+        $suc_res = mysql_query($suc_sql);
+        $HTML_SUB = "";
+        while ($suc_lst = mysql_fetch_assoc($suc_res)) {
+        $suc_img = explode("||",$suc_lst['view3_file']);
+        ?>
+                            <li class="swiper-slide">
+                                <div class="fs_def">
+                                    <div class="text_wrap">
+                                        <div class="bnr_store"><?=$suc_lst['view3_title_01']?><span class="line"></span></div>
+                                        <div class="bnr_ttl"><?=$suc_lst['view3_title_02']?></div>
+                                        <a href="#none" class="bnr_a btn_a text" data-idx="<?=$suc_lst['view3_idx']?>" data-key="1">자세히보기</a>
+                                    </div>
+                                    <div class="bnr_img f_right"><a href="#" class="bnr_a text" data-idx="<?=$suc_lst['view3_idx']?>" data-key="1"><img src="<?=$root?>/upload/success_01<?=$suc_img[2]?>" alt=""></a></div>
+                                </div>
+                            </li>
+        <?
+
+        $HTML_SUB .= "<li class='swiper-slide'>";
+        $HTML_SUB .= "<div class='bnr_bot_img'><img src='{$root}/upload/success_01{$suc_img[2]}' alt=''></div>";
+        $HTML_SUB .= "<div class='bnr_bot_store'>{$suc_lst['view3_title_01']}</div>";
+        $HTML_SUB .= "<div class='bnr_bot_ttl'>{$suc_lst['view3_title_02']}</div>";
+        $HTML_SUB .= "</li>";
+        }
+        ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bnr_bot_slide rel">
+                    <div class="swiper-container">
+                        <ul class="swiper-wrapper">
+                            <?=$HTML_SUB?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //fran_bnr end -->
+        <!-- sales start -->
+        <div class="sales chapters">
+            <div class="layer_ttl">
+                <span class="line"></span>
+                <p class="lt sales_lt"><img src="<?=$root?>/img/page/fran/sales_lt.png" alt="높은 매출"></p>
+            </div>
+            <div class="sales_img l50"><img src="<?=$root?>/img/page/fran/sales_img.png" alt=""></div>
+            <div class="txt_wrap rel">
+                <p class="title sales_ttl">
+                    <em>탄력있는 매출로</em><br>
+                    언제나 미소 짓습니다
+                </p>
+                <p class="f_stxt">
+                    저가 포차, 와인 주점, 수제 맥주처럼 반짝 유행하는 브랜드와 달리<br>
+                    유행을 타지 않고 지속적으로 성장하고 있는 안정성 있는 브랜드입니다.
+                </p>
+                <ul class="sales_paging fs_def">
+                    <li class="swiper-pagination-bullet-active"><a href="#none">
+                        <span class="line gray"></span>
+                        <span class="line color"></span>
+                        충족할 수 있는 높은 테이블 단가
+                    </a></li>
+                    <li><a href="#none">
+                        <span class="line gray"></span>
+                        <span class="line color"></span>
+                        술이 잘 팔리는 이자카야 술집
+
+                    </a></li>
+                    <li><a href="#none">
+                        <span class="line gray"></span>
+                        <span class="line color"></span>
+                        합리적인 세트 메뉴 구성
+                    </a></li>
+                    <li><a href="#none">
+                        <span class="line gray"></span>
+                        <span class="line color"></span>
+                        소비력 있는 계층의 니즈를 충족
+                    </a></li>
+                    <li><a href="#none color">
+                        <span class="line gray"></span>
+                        <span class="line color"></span>
+                        상권에 따른 딜리버리 서비스
+                    </a></li>
+                </ul>
+            </div>
+            <div class="sales_slide over_h">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide fs_def swiper-slide-active">
+                            <div class="sl_img"><img src="<?=$root?>/img/page/fran/sales_sl1.jpg" alt=""></div>
+                            <div class="txt_box">
+                                <p class="stitle">
+                                    충족할 수 있는<br>
+                                    <em>높은 테이블 단가</em>
+                                </p>
+                                <p class="f_stxt">
+                                    차별화된 맛과 공간은 물론 디테일한 서비스의 제공으로<br>
+                                    높은 테이블 단가의 합리성을 충족합니다.<br><br>
+
+                                    50,000원 ~ 53,000원 수준의 테이블 <br>
+                                    단가로 쉽게 높은 매출을 창출합니다.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="swiper-slide fs_def">
+                            <div class="sl_img"><img src="<?=$root?>/img/page/fran/sales_sl2.jpg" alt=""></div>
+                            <div class="txt_box">
+                                <p class="stitle">
+                                    팔려야 할 술이 잘 팔리는<br>
+                                    <em>이자카야 술집</em>
+                                </p>
+                                <p class="f_stxt">
+                                    일반 주류(소주, 맥주)와 5:5의 판매 비율로<br>
+                                    사케와 일본 생맥주에 대한 판매 비율이 높습니다.<br><br>
+
+                                    다양한 프로모션을 통해 수익성 높은 <br>
+                                    주류의 판매를 촉진합니다.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="swiper-slide fs_def">
+                            <div class="sl_img"><img src="<?=$root?>/img/page/fran/sales_sl3.jpg" alt=""></div>
+                            <div class="txt_box">
+                                <p class="stitle">
+                                    <em>합리적인 세트 메뉴 구성</em>
+                                </p>
+                                <p class="f_stxt">
+                                    수준 높은 맛으로 세트 메뉴에 대한 <br>
+                                    니즈가 강합니다.<br><br>
+
+                                    고객은 합리적인 가격으로 만족하고 <br>
+                                    가맹점은 높은 매출로 만족합니다.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="swiper-slide fs_def">
+                            <div class="sl_img"><img src="<?=$root?>/img/page/fran/sales_sl4.jpg" alt=""></div>
+                            <div class="txt_box">
+                                <p class="stitle">
+                                    소비력 있는 계층의<br>
+                                    <em>니즈를 충족</em>
+                                </p>
+                                <p class="f_stxt">
+                                    20대 중반 이상의 세대부터 중장년층의 세대까지.<br><br>
+
+                                    다양한 세대가 함께 융화되는 편안한 <br>
+                                    공간과 정통성 있는 이자카야 요리로 <br>
+                                    주요 타겟층의 니즈를 충족합니다.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="swiper-slide fs_def">
+                            <div class="sl_img"><img src="<?=$root?>/img/page/fran/sales_sl5.jpg" alt=""></div>
+                            <div class="txt_box">
+                                <p class="stitle">
+                                    상권에 따른<br>
+                                    <em>딜리버리 서비스를 지원</em>
+                                </p>
+                                <p class="f_stxt">
+                                    신도시와 같은 대형 주거 상권에 입점하는 매장은<br>
+                                    딜리버리 서비스를 통해 높은 추가 매출을 창출합니다.<br><br>
+
+                                    일반 상권의 가맹점은 해당하는 상권의 <br>
+                                    수요와 수익성을 철저히 분석해<br>
+                                    적합할 경우에만 딜리버리 서비스를 지원합니다.
+
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    <button type="button" class="sales_btn sales_prev">이전</button>
+                    <button type="button" class="sales_btn sales_next">다음</button>
+                </div>
+            </div>
+        </div>
+        <!-- //sales end -->
+        <!-- story start -->
+        <div class="story rel chapters">
+            <div class="layer_ttl">
+                <span class="line"></span>
+                <p class="lt story_lt"><img src="<?=$root?>/img/page/fran/story_lt.png" alt="브랜드 경쟁력"></p>
+            </div>
+            <div class="story_img l50"><img src="<?=$root?>/img/page/fran/story_img.png" alt=""></div>
+            <ul class="fs_def t_center center story_list">
+                <li class="bg el3_1">
+                    <div class="video_area">
+                        <iframe src="//player.vimeo.com/video/380644411?background=1&amp;autopause=0" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                    <div class="before_h hover">
+                        <p class="bh_ttl"><img src="<?=$root?>/img/page/fran/story_ttl1.png" alt="요리의 자부심"></p>
+                    </div>
+                    <div class="after_h hover">
+                        <div class="va_c">
+                            <p class="stitle">
+                                여운을 남기다<br>
+                                <em>요리의 자부심</em>
+                            </p>
+                            <p class="f_stxt">
+                                어디선가 맛보았던 똑같은 음식이 아닌<br>
+                                정통성을 내제한<br>
+                                독창적인 안주 요리를 만듭니다.
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="bg el3_2">
+                    <div class="before_h hover">
+                        <p class="bh_ttl"><img src="<?=$root?>/img/page/fran/story_ttl2.png" alt="독립된 목로공간"></p>
+                    </div>
+                    <div class="after_h hover">
+                        <div class="va_c">
+                            <p class="stitle">
+                                이야기를 남기다<br>
+                                <em>독립적인 목로 공간</em>
+                            </p>
+                            <p class="f_stxt">
+                                따스한 감성이 묻어난 목로의 공간.<br>
+                                100년 전통 목로 선술집의 따스한 감성에<br>
+                                현대적 요소를 결합해<br>
+                                산카이만의 세련된 분위기를 만듭니다.
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="bg el3_3">
+                    <div class="before_h hover">
+                        <p class="bh_ttl"><img src="<?=$root?>/img/page/fran/story_ttl3.png" alt="디테일의 감동"></p>
+                    </div>
+                    <div class="after_h hover">
+                        <div class="va_c">
+                            <p class="stitle">
+                                기억을 남기다<br>
+                                <em>섬세한 디테일의 감동</em>
+                            </p>
+                            <p class="f_stxt">
+                                서너 잔의 술을 나누기에 부족함 없는<br>
+                                수준 높은 기본 안주를 제공합니다.<br>
+                                조리 시간의 기다림이 지루하지 않습니다.
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- //story end -->
+        <!-- owner start -->
+        <div class="owner chapters">
+            <div class="owner_slide center t_center over_h">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <p class="off"><img src="<?=$root?>/img/page/fran/owner_sl1.jpg" alt=""></p>
+                            <p class="on"><img src="<?=$root?>/img/page/fran/owner_sl1on.jpg" alt=""></p>
+                        </li>
+                        <li class="swiper-slide">
+                            <p class="off"><img src="<?=$root?>/img/page/fran/owner_sl2.jpg" alt=""></p>
+                            <p class="on"><img src="<?=$root?>/img/page/fran/owner_sl2on.jpg" alt=""></p>
+                        </li>
+                        <li class="swiper-slide">
+                            <p class="off"><img src="<?=$root?>/img/page/fran/owner_sl3.jpg" alt=""></p>
+                            <p class="on"><img src="<?=$root?>/img/page/fran/owner_sl3on.jpg" alt=""></p>
+                        </li>
+                    </ul>
+                    <button type="button" class="owner_btn owner_prev">이전</button>
+                    <button type="button" class="owner_btn owner_next">다음</button>
+                </div>
+            </div>
+            <div class="layer_ttl">
+                <span class="line"></span>
+                <p class="lt owner_lt"><img src="<?=$root?>/img/page/fran/owner_lt_1.png" alt="오너쉐프"></p>
+            </div>
+            <div class="txt_wrap center">
+                <p class="title shadow">
+                    <em>실패하지 않는<br>
+                    이자카야</em>
+                </p>
+                <p class="f_stxt shadow">
+                    단 한 분의 낙오없이 함께 성공하기 위해<br>
+                    철저한 오너셰프 교육과 간소화된 조리 시스템을 제공합니다.
+                </p>
+            </div>
+            <ul class="fs_def t_center center owner_list">
+                <li class="el4_1">
+                    <div class="list_img"><img src="<?=$root?>/img/page/fran/owner_img1.jpg" alt=""></div>
+                    <div class="list_txt t_left">
+                        <p class="stitle">
+                            <em>철저한 4주간의 교육,<br>
+                            오너셰프가 되다</em>
+                        </p>
+                        <p class="f_stxt">
+                            본사 조리 R&D를 완벽하게 이수한 후<br>
+                            현장 실습을 통해 총 4주간<br>
+                            철저하게 교육하며 신메뉴 출시때마다<br>
+                            가맹점으로 직접 교육 인력을<br>
+                            파견합니다.
+                        </p>
+                    </div>
+                </li>
+                <li class="el4_2">
+                    <div class="list_img"><img src="<?=$root?>/img/page/fran/owner_img2.jpg" alt=""></div>
+                    <div class="list_txt t_left">
+                        <p class="stitle">
+                            <em>누구나 쉽게 사시미를<br>
+                            제공할 수 있다</em>
+                        </p>
+                        <p class="f_stxt">
+                            모든 사시미 요리는 손질되어<br>
+                             필렛상태로 가맹점에 납품되어  <br>
+                            전문 주방 인력이 필요하지 않습니다.
+                        </p>
+                    </div>
+                </li>
+                <li class="el4_3">
+                    <div class="list_img"><img src="<?=$root?>/img/page/fran/owner_img3.jpg" alt=""></div>
+                    <div class="list_txt t_left">
+                        <p class="stitle">
+                            <em>간소화된 조리 시스템</em>
+                        </p>
+                        <p class="f_stxt">
+                            주요 조리 과정의 60%을 처리해<br>
+                            가맹점에 물류를 제공합니다.<br>
+                            4주간의 교육을 이수한 오너셰프라면<br>
+                            누구나 쉽게 맛있는 이자카야 요리를<br>
+                            만들 수 있습니다.
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            <div class="owner_con bg">
+                <div class="center txt_wrap">
+                    <p class="title shadow">
+                        <em>오너셰프가 되어보니<br>
+                        많은 것이 뒤따릅니다</em>
+                    </p>
+                    <p class="f_stxt shadow">
+                        단 한 분의 낙오없이 함께 성공하기 위해<br>
+                        철저한 오너셰프 교육과 간소화된 조리 시스템을 제공합니다.
+                    </p>
+                </div>
+                <ul class="txt_box fs_def center t_center">
+                    <li>
+                        <p class="stitle con_stitle">
+                            주방 전문 인력으로 인한<br>
+                            <em>인건비 절감</em>
+                        </p>
+                        <div class="arr1 arr"><img src="<?=$root?>/img/page/fran/owner_arr.png" alt=""></div>
+                    </li>
+                    <li>
+                        <p class="stitle con_stitle">
+                            원팩 시스템에 비해<br>
+                            <em>현저히 낮은 원가율</em>
+                        </p>
+                        <div class="arr2 arr"><img src="<?=$root?>/img/page/fran/owner_arr.png" alt=""></div>
+                    </li>
+                    <li>
+                        <p class="stitle con_stitle">
+                            일관된 주방 컨디션으로<br>
+                            <em>고객 만족도 증가</em>
+                        </p>
+                        <div class="arr3 arr"><img src="<?=$root?>/img/page/fran/owner_arr_up.png" alt=""></div>
+                    </li>
+                </ul>
+                <p class="stitle t_center con_stitle shadow">이를 대체할 수 있는 원팩 시스템은 존재하지 않습니다.</p>
+                <p class="owner_text f_stxt t_center shadow">
+                    이자카야에 대한 고객 니즈는 분명합니다.<br>
+                    요리 본연의 매력을 극대화한 맛을 통한 만족<br><br>
+
+                    현지에서 직접 생산되는 향미료를 사용해야 제대로 된 맛을 낼 수 있는 나가사키 짬뽕처럼<br>
+                    대부분의 이자카야 요리는 쉐프의 손 맛이 더해져야 요리 본연의 매력을 극대화 할 수 있습니다.
+                </p>
+            </div>
+        </div>
+        <!-- //owner end -->
+        <!-- menu start -->
+        <div class="menu chapters">
+            <div class="layer_ttl">
+                <span class="line"></span>
+                <p class="lt menu_lt"><img src="<?=$root?>/img/page/fran/menu_lt.png" alt="오너쉐프"></p>
+            </div>
+            <div class="txt_wrap center">
+                <p class="title">
+                    <em>가볍게 완성이라<br>
+                    판단하지 않습니다</em>
+                </p>
+                <p class="f_stxt">
+                    1년간 구축한 메뉴 판매 경향 분석 자료를 토대로<br>
+                    불필요한 메뉴는 제외하고 신메뉴 출시를 통해 이를 보완합니다.
+
+                </p>
+            </div>
+            <div class="menu_img_slide">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide t_right">
+                            <div class="sl_img"><img src="<?=$root?>/img/page/fran/menu_isl1_1.png" alt="" class="w100"></div>
+                        </li>
+                        <li class="swiper-slide t_right">
+                            <div class="sl_img"><img src="<?=$root?>/img/page/fran/menu_isl2_1.png" alt="" class="w100"></div>
+                        </li>
+                        <li class="swiper-slide t_right">
+                            <div class="sl_img"><img src="<?=$root?>/img/page/fran/menu_isl3_1.png" alt="" class="w100"></div>
+                        </li>
+                        <li class="swiper-slide t_right">
+                            <div class="sl_img"><img src="<?=$root?>/img/page/fran/menu_isl4_1.png" alt="" class="w100"></div>
+                        </li>
+                    </ul>
+                </div>
+                <p class="title t_left shadow">
+                    1년 1회<br>
+                    <span>대규모 메뉴개편</span>
+                </p>
+            </div>
+            <div class="menu_slide l50">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <span class="num">01</span>
+                            <p class="stitle">
+                                <em>대규모 메뉴 개편</em>
+                            </p>
+                            <p class="f_stxt">
+                                보여주기식에 급급한 분기별 신메뉴<br>
+                                출시가 아닌 전체 메뉴 라인을 점검하고<br>
+                                트렌디한 신메뉴와 함께<br>
+                                대규모 메뉴 개편을 시행합니다.
+                            </p>
+                        </li>
+                        <li class="swiper-slide">
+                            <span class="num">02</span>
+                            <p class="stitle">
+                                신메뉴 출시를 통해 보완
+                            </p>
+                            <p class="f_stxt">
+                                1년간 구축한 메뉴 판매 경향 분석 자료를<br>
+                                토대로 불필요한 메뉴는 제외하고<br>
+                                신메뉴 출시를 통해 이를 보완합니다.
+                            </p>
+                        </li>
+                        <li class="swiper-slide">
+                            <span class="num">03</span>
+                            <p class="stitle">
+                                <em>끊임없는 고찰과 설문조사</em>
+                            </p>
+                            <p class="f_stxt">
+                                시그니처라 불리우는 메뉴들 또한<br>
+                                끊임없는 고찰과 설문 조사를 통해<br>
+                                아쉬운 부분을 찾고 이를 개선합니다.
+
+                            </p>
+                        </li>
+                        <li class="swiper-slide">
+                            <span class="num">04</span>
+                            <p class="stitle">
+                                <em>고객의 니즈를 충족</em>
+                            </p>
+                            <p class="f_stxt">
+                                현장 경험을 통한 가맹점 의견과<br>
+                                본사에서 분석한 외식 트렌드 의견을 조율해<br>
+                                고객의 니즈를 충족할 수 있는<br>
+                                영향력 있는 신메뉴를 출시합니다.
+                            </p>
+                        </li>
+                    </ul>
+                    <button type="button" class="menu_btn menu_prev">이전</button>
+                    <button type="button" class="menu_btn menu_next">다음</button>
+                </div>
+            </div>
+            <div class="menu_fslide w100">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <div class="sl_bg"><img src="<?=$root?>/img/page/fran/menu_fsl2.jpg" alt=""></div>
+                            <p class="sl_name"></p>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_bg"></div>
+                            <p class="sl_name"></p>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_bg"><img src="<?=$root?>/img/page/fran/menu_fsl3.jpg" alt=""></div>
+                            <p class="sl_name"></p>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_bg">
+                                <iframe src="//player.vimeo.com/video/380644354?background=1&amp;autopause=0" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            </div>
+                            <p class="sl_name"></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- //menu end -->
+        <!-- happy start -->
+        <div class="happy rel chapters">
+            <div class="layer_ttl">
+                <span class="line"></span>
+                <p class="lt happy_lt"><img src="<?=$root?>/img/page/fran/happy_lt.png" alt="본사지원"></p>
+            </div>
+            <div class="txt_wrap center">
+                <p class="title">
+                    <em>든든한 버팀목이 되어<br>
+                    함께 웃습니다</em>
+                </p>
+                <p class="f_stxt">
+                    형식적으로 묻고 답하는 단순한 방문이 아닌<br>
+                    문제를 찾아내고 개선하는 의미 있는 방문을 시행하기 위해<br>
+                    전문 인력의 해피바이저를 가맹점에 투입합니다.
+                </p>
+            </div>
+            <div class="l50 happy_img"><img src="<?=$root?>/img/page/fran/happy_img_1.jpg" alt=""></div>
+            <ul class="happy_list">
+                <li class="on">
+                    <a href="#none" class="stitle">01. 똑똑한 해피바이저의 행복한 해피서비스 <span class="arr on"></span></a>
+                    <p class="f_stxt">
+                        각 매장의 식자재 관리는 물론 메뉴 품질, 신메뉴 교육,<br>
+                        홀 서비스 및 청결 상태를 체크하고 탄력있는 매장 운영과<br>
+                        홍보 마케팅을 지원합니다.<br><br>
+
+                        모든 것이 완벽하다면? 고생하셨습니다. 사장님 퇴근하세요!<br><br>
+
+                        오늘 하루 잠깐의 시간이지만 똑똑한 해피바이저가<br>
+                        사장님 대신 일하고 퇴근하겠습니다.
+                    </p>
+                </li>
+                <li>
+                    <a href="#none" class="stitle">02. 주방 인력 채용시 무상 조리 교육 지원 <span class="arr"></a>
+                    <p class="f_stxt off">
+                        새롭게 채용한 주방 인력 고민말고<br>
+                        본사로 보내주십시요.<br><br>
+
+                        빠른 시간내에 완벽한<br>
+                        산카이 쉐프로 변화시키겠습니다.
+                    </p>
+                </li>
+                <li>
+                    <a href="#none" class="stitle">03. 예상치 못했던 법적 문제들 해결 <span class="arr"></a>
+                    <p class="f_stxt off">
+                        산카이 본사의 경영 자문 그룹<br>
+                        (법률, 노무, 세무, 가맹거래 등)에 의한<br>
+                        지원으로 신속히 해결합니다.
+                    </p>
+                </li>
+            </ul>
+            <div class="happy_notice">
+                <ul>
+<?
+$not_sql = "select * from ".TABLE_LEFT."happy_01 where view3_use = 1 and view3_notice = 1 order by view3_order desc, view3_write_day desc";
+$not_res = mysql_query($not_sql);
+while ($not_lst = mysql_fetch_assoc($not_res)) {
+?>
+                    <li>
+                        <a href="<?=BOARD?>/index.php?board=happy_01&amp;type=view&amp;idx=<?=$hap_lst['view3_idx']?>&amp;skin=gallery_00&amp;modal=1" class="bindContentsModalOpen" data-key="2">
+                            <img src='<?=$root?>/design/other/notice_ing.png' alt=''>&nbsp;&nbsp;&nbsp;<?=$not_lst['view3_title_01']?>
+                        </a>
+                    </li>
+<?
+}
+?>
+                </ul>
+            </div>
+            <div class="happy_slide">
+                <div class="swiper-container rel">
+                    <ul class="swiper-wrapper">
+<?
+$hap_sql = "select * from ".TABLE_LEFT."happy_01 where view3_use = 1 and view3_notice != 1 order by view3_order desc, view3_write_day desc";
+$hap_res = mysql_query($hap_sql);
+while ($hap_lst = mysql_fetch_assoc($hap_res)) {
+
+    $contents = view3_html($hap_lst['view3_command_01']); // addslashes 함수를 사용하여 DB에 저장한 경우
+    preg_match("/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i", $contents, $matches);
+
+    $hap_img = explode("||",$hap_lst['view3_file']);
+    if ($hap_img[2] == "") {
+        if ($matches[1] == "") {
+            $happy_img = $root."/design/noimg/happy_01.jpg";
+        } else {
+            $happy_img = $matches[1];
+        }
+    } else {
+        $happy_img = $root."/upload/happy_01".$hap_img[2];
+    }
+?>
+                        <li class="swiper-slide bg">
+                            <a href="<?=BOARD?>/index.php?board=happy_01&amp;type=view&amp;idx=<?=$hap_lst['view3_idx']?>&amp;skin=gallery_00&amp;modal=1" class="bindContentsModalOpen" data-key="2">
+                                <div class="happy_sl_img" style="background:url('<?=$happy_img?>') center no-repeat;background-size:cover"></div>
+                                <div class="happy_sl_ttl fs_def t_center">
+                                    <p class="f_stxt ellipsis"><?=$hap_lst['view3_title_01']?></p>
+                                    <p class="happy_more">+</p>
+                                </div>
+                            </a>
+                        </li>
+<?
+}
+?>
+                    </ul>
+                    <button type="button" class="happy_btns happy_prev">이전</button>
+                    <button type="button" class="happy_btns happy_next">다음</button>
+                </div>
+                <!-- <ul class="happy_paging fs_def t_center"></ul> -->
+            </div>
+        </div>
+        <!-- //happy end -->
+        <!-- comp start -->
+        <div class="comp chapters">
+            <div class="layer_ttl">
+                <span class="line"></span>
+                <p class="lt comp_lt"><img src="<?=$root?>/img/page/fran/comp_lt_1.png" alt="창업경쟁력"></p>
+            </div>
+            <div class="comp_con rel bg">
+                <div class="video_area l50">
+                    <iframe src="//player.vimeo.com/video/380644373?background=1&amp;autopause=0" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <div class="up_z1">
+                    <p class="title t_center shadow">
+                        10년 이상 운영할 수 있는<br>
+                        <em>안정성을 검증하다</em>
+                    </p>
+                    <p class="f_stxt t_center shadow">
+                        이자카야 요리 주점 산카이는 저가 포차, 와인 주점, 수제 맥주처럼<br>
+                        반짝 유행하는 브랜드와 달리 유행을 타지 않고<br>
+                        지속적으로 성장하고 있는 안정성 있는 브랜드입니다.
+                    </p>
+                </div>
+            </div>
+            <div class="slide_wrap">
+                <div class="comp_slide rel over_h">
+                    <div class="swiper-container">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide">
+                                <div class="sl_img"><img src="<?=$root?>/img/page/fran/comp_sl1.jpg" alt=""></div>
+                                <div class="txt_box">
+                                    <p class="title shadow">
+                                        <em>상권의 탓을 하지 않습니다</em>
+                                    </p>
+                                    <p class="f_stxt shadow">
+                                        특수 상권은 물론 오피스 및<br>
+                                        역세권 상권, 동네 상권에서도<br>
+                                        성공할 수 있는 경쟁력이 검증되었습니다.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="swiper-slide">
+                                <div class="sl_img"><img src="<?=$root?>/img/page/fran/comp_sl2.jpg" alt=""></div>
+                                <div class="txt_box">
+                                    <p class="title shadow">
+                                        소형 매장에서도<br>
+                                        <em>높은 매출 창출이 가능</em>
+                                    </p>
+                                    <p class="f_stxt shadow">
+                                        다른 주점 아이템에 비해 높은 테이블 단가로 <br>
+                                        20평 매장에서도 높은 매출 창출이 가능합니다.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="swiper-slide">
+                                <div class="sl_img"><img src="<?=$root?>/img/page/fran/comp_sl3.jpg" alt=""></div>
+                                <div class="txt_box">
+                                    <p class="title shadow">
+                                        <em>가맹점 매출 활성화</em><br>
+                                        시스템 운영
+                                    </p>
+                                    <p class="f_stxt shadow">
+                                        다양한 채널의 SNS 마케팅 및 로컬 마케팅 분석 시스템.<br>
+                                        매장 재방문 유도를 위한 포인트 적립 시스템.<br>
+                                        본사에서 진행하는 전 가맹점 통합 이벤트 행사
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="swiper-slide">
+                                <div class="sl_img"><img src="<?=$root?>/img/page/fran/comp_sl4.jpg" alt=""></div>
+                                <div class="txt_box">
+                                    <p class="title shadow">
+                                        <em>점포개발 및 상권분석</em><br>
+                                        시스템 운영합니다
+                                    </p>
+                                    <p class="f_stxt shadow">
+                                        창업 자금과 운영 규모에 적합한 현실적인 점포를 지원하겠습니다.<br>
+                                        출점전략, 시장조사 분석, 입지선정 전략, 점포개발, 상권분석 시스템을 통해<br>
+                                        투자 타당성이 적합한 최적의 매물을 항시 보유하고 있습니다.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <button type="button" class="comp_btn comp_prev">이전</button>
+                    <button type="button" class="comp_btn comp_next">다음</button>
+                </div>
+            </div>
+        </div>
+        <!-- //comp end -->
+        <!-- change start -->
+        <div class="chan rel">
+            <div class="abs border_line"></div>
+            <div class="rel">
+                <p class="stitle t_center shadow">실패 없는 재도전!</p>
+                <p class="title t_center"><em class="rel"><span class="highlight"></span><span class="rel">업종변경 후 매출상승!</span></em></p>
+                <p class="text chan_text t_center shadow">
+                    보유하고 계신 매장의 시설 및 비품, 인테리어 요소등을 분석하여 활용하면서 산카이만의 확실한 경쟁요소들을<br>
+                    기존매장에 적용하여 부담없는 비용으로 새로운 산카이 매장을 운영하실 수 있는 방법을 찾아 드리겠습니다.
+                </p>
+                <div class="text_wrap l50 bg">
+                    <p class="tw_ttl">
+                        <span>실투자 30%</span> <br>
+                        + 창업자금대출 70%
+                    </p>
+                    <p class="tw_text">
+                        기존에 운영했던 매장의 시설과<br>
+                        운영집기를 최대한 활용하고 기존<br>
+                        브랜드에 산카이만의 디자인적인<br>
+                        요소를 적용하여 인테리어 비용을<br>
+                        최소화하면서 산카이 컨셉을 최대한<br>
+                        살려 운영할 수 있게 하는 맞춤형<br>
+                        창업 시스템입니다.
+                    </p>
+                </div>
+                <div class="list_wrap l50 fs_def">
+                    <ul class="before_list">
+                        <li>
+                            <div class="rel">
+                                <img src="<?=$root?>/img/page/fran/chan_bl_img1.jpg" alt="">
+                                <p class="list_ttl">월매출 <em>2,000만원</em> 폐업위기</p>
+                            </div>
+                            <p class="text">타르트전문점 업종변경전</p>
+                        </li>
+                        <li>
+                            <div class="rel">
+                                <img src="<?=$root?>/img/page/fran/chan_bl_img2_1.jpg" alt="">
+                                <p class="list_ttl">월매출 <em>2,500만원</em> 폐업위기</p>
+                            </div>
+                            <p class="text">포차OO 업종변경전</p>
+                        </li>
+                    </ul>
+                    <ul class="after_list">
+                        <li>
+                            <div class="rel list_box">
+                                <img src="<?=$root?>/img/page/fran/chan_al_img1.jpg" alt="">
+                                <p class="list_ttl">월매출 <em>6,000만원</em> 돌파!</p>
+                            </div>
+                            <p class="text">산카이 부천역곡점 업종변경후</p>
+                            <div class="list_up"><img src="<?=$root?>/img/page/fran/chan_up.png" alt="매출상승"></div>
+                        </li>
+                        <li>
+                            <div class="rel list_box">
+                                <img src="<?=$root?>/img/page/fran/chan_al_img2.jpg" alt="">
+                                <p class="list_ttl">월매출 <em>6,000만원</em> 돌파!</p>
+                            </div>
+                            <p class="text">산카이 운정점 업종변경후</p>
+                            <div class="list_up"><img src="<?=$root?>/img/page/fran/chan_up.png" alt="매출상승"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- //change end -->
+        <!-- cost start -->
+        <div class="cost chapters">
+            <p class="title t_center"><em>창업은 어떻게?</em></p>
+            <p class="f_stxt t_center">창업을 생각하시는 예비점주님들께 하나하나 진심으로 도와드리겠습니다.</p>
+            <ul class="cost_tab fs_def t_center">
+                <li class="on"><a href="#none">창업절차</a></li>
+                <li><a href="#none">수익성 분석</a></li>
+                <li><a href="#none">창업비용</a></li>
+            </ul>
+            <div class="cost_conts">
+                <div class="cont1">
+                    <ul class="cont1_list fs_def">
+                        <li>
+                            <p class="cont1_num">1</p>
+                            <div class="text_box">
+                                <p class="stitle">가맹문의<span>(1800-9873)</span></p>
+                                <p class="f_stxt">
+                                    -  산카이 창업문의<br>
+                                    -  가맹점 및 현장 미팅<br>
+                                    -  창업비용 상담
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="cont1_num">2</p>
+                            <div class="text_box">
+                                <p class="stitle">상권/입지분석</p>
+                                <p class="f_stxt">
+                                    -  상권 및 입지에 대한 의사소통<br>
+                                    -  투자자금에 맞는 점포 개발<br>
+                                    -  출점 타당성 검토
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="cont1_num">3</p>
+                            <div class="text_box">
+                                <p class="stitle">가맹계약</p>
+                                <p class="f_stxt">
+                                    -  점포 계약 이후 가맹계약<br>
+                                    -  도면 및 견적 미팅<br>
+                                    -  오픈일정 협의
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="cont1_num">4</p>
+                            <div class="text_box">
+                                <p class="stitle">인테리어</p>
+                                <p class="f_stxt">
+                                    -  디자인 설계<br>
+                                    -  실내외 공사 진행<br>
+                                    -  공정표 안내 및 감리 실시
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="cont1_num">5</p>
+                            <div class="text_box">
+                                <p class="stitle"><span>예비가맹점</span> 본사교육</p>
+                                <p class="f_stxt">
+                                    -  본사 교육 스케줄에 의한 교육<br>
+                                    -  주방 조리 교육<br>
+                                    -  홀 서비스 교육<br>
+                                    -  매장 운영/위생 교육
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="cont1_num">6</p>
+                            <div class="text_box">
+                                <p class="stitle">오픈 최종점검</p>
+                                <p class="f_stxt">
+                                    -  인테리어 마감 최종점검<br>
+                                    -  사업자등록/영업신고<br>
+                                    -  신용카드 가맹점 개설<br>
+                                    -  각종 인허가 점검<br>
+                                    -  초도식자재 정리
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="cont1_num">7</p>
+                            <div class="text_box">
+                                <p class="stitle"><em>그랜드 오픈!</em></p>
+                                <p class="f_stxt">
+                                    -  본사 해피바이저 오픈 지원<br>
+                                    -  본사 오픈바이저 지원<br>
+                                    -  각종 판촉행사 전폭 지원
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="cont1_num">8</p>
+                            <div class="text_box">
+                                <p class="stitle">사후관리</p>
+                                <p class="f_stxt">
+                                    -  오픈매장 집중관리 시스템<br>
+                                    -  체계적인 매장관리<br>
+                                    -  해피서비스 시스템 운용
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cont2" style="display:none">
+                    <div class="cont2_wrap fs_def">
+                        <div class="chart_slide">
+                            <div class="swiper-container">
+                                <ul class="swiper-wrapper">
+                                    <!--<li class="swiper-slide">
+                                        <div class="chart_text t_left">
+                                            실순이익 (40%)<br>
+                                            <em>￦19,347,400</em>
+                                        </div>
+                                        <img src="<?=$root?>/img/page/fran/cost_chart1.png" alt="">
+                                        <p class="stitle t_center">대화역점</p>
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <div class="chart_text t_left">
+                                            실순이익 (33%)<br>
+                                            <em>￦20,275,400</em>
+                                        </div>
+                                        <img src="<?=$root?>/img/page/fran/cost_chart2.png" alt="">
+                                        <p class="stitle t_center">방이점</p>
+                                    </li>-->
+                                    <li class="swiper-slide">
+                                        <div class="chart_text t_left">
+                                            실순이익 (37%)<br>
+                                            <em>￦23,654,731</em>
+                                        </div>
+                                        <img src="<?=$root?>/img/page/fran/cost_chart3_1.png" alt="">
+                                        <p class="stitle t_center">화정점</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--<button type="button" class="chart_btns chart_prev">이전</button>
+                            <button type="button" class="chart_btns chart_next">다음</button>-->
+                        </div>
+                        <div class="table_slide t_left">
+                            <div class="swiper-container">
+                                <ul class="swiper-wrapper">
+                                    <!--<li class="swiper-slide">
+                                        <div class="table_wrap">
+                                            <p class="table_ex">■ 지출금액에 따른 구성비<span class="unit f_right">[단위 : 원]</span></p>
+                                            <table class="cont2_table">
+                                                <caption class="indent">수익성 분석</caption>
+                                                <colgroup>
+                                                    <col width="160px">
+                                                    <col width="190px">
+                                                    <col width="160px">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>구분</th>
+                                                        <th>지출금액</th>
+                                                        <th>구성비(%)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr class="foot_space">
+                                                        <th colspan="3"></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>지출 합계</th>
+                                                        <th colspan="2" class="sum">29,400,000</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody class="table1">
+                                                    <tr>
+                                                        <td>식자재</td>
+                                                        <td>8,300,000</td>
+                                                        <td rowspan="2">31%<br><span class="small">(식자재 + 주류)</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>주류</td>
+                                                        <td>6,600,000</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>인건비</td>
+                                                        <td>7,000,000</td>
+                                                        <td>14%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>임대료</td>
+                                                        <td>3,000,000</td>
+                                                        <td>6%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>운영경비 & 잡비</td>
+                                                        <td>4,500,000</td>
+                                                        <td>9%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>실순이익</td>
+                                                        <td>19,347,400</td>
+                                                        <td>40%</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="table_ex">■ 대화역점 매출 상세</p>
+                                            <table class="cont2_table">
+                                                <caption class="indent">매출 상세</caption>
+                                                <colgroup>
+                                                    <col width="110px">
+                                                    <col width="200px">
+                                                    <col width="200px">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>테이블단가</th>
+                                                        <th>월매출</th>
+                                                        <th>일매출</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>49,339</td>
+                                                        <td class="sum">48,747,400</td>
+                                                        <td class="sum">1,624,913</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <div class="table_wrap">
+                                            <p class="table_ex">■ 지출금액에 따른 구성비<span class="unit f_right">[단위 : 원]</span></p>
+                                            <table class="cont2_table">
+                                                <caption class="indent">수익성 분석</caption>
+                                                <colgroup>
+                                                    <col width="160px">
+                                                    <col width="190px">
+                                                    <col width="160px">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>구분</th>
+                                                        <th>지출금액</th>
+                                                        <th>구성비(%)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr class="foot_space">
+                                                        <th colspan="3"></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>지출 합계</th>
+                                                        <th colspan="2" class="sum">40,267,000</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody class="table1">
+                                                    <tr>
+                                                        <td>식자재</td>
+                                                        <td>10,417,000</td>
+                                                        <td rowspan="2">33%<br><span class="small">(식자재 + 주류)</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>주류</td>
+                                                        <td>9,350,000</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>인건비</td>
+                                                        <td>12,000,000</td>
+                                                        <td>20%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>임대료</td>
+                                                        <td>3,500,000</td>
+                                                        <td>6%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>운영경비 & 잡비</td>
+                                                        <td>5,000,000</td>
+                                                        <td>8%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>실순이익</td>
+                                                        <td>20,275,400</td>
+                                                        <td>33%</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="table_ex">■ 방이점 매출 상세</p>
+                                            <table class="cont2_table">
+                                                <caption class="indent">매출 상세</caption>
+                                                <colgroup>
+                                                    <col width="110px">
+                                                    <col width="200px">
+                                                    <col width="200px">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>테이블단가</th>
+                                                        <th>월매출</th>
+                                                        <th>일매출</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>55,543</td>
+                                                        <td class="sum">60,542,400</td>
+                                                        <td class="sum">2,018,080</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </li>-->
+                                    <li class="swiper-slide">
+                                        <div class="table_wrap">
+                                            <p class="table_ex">■ 지출금액에 따른 구성비<span class="unit f_right">[단위 : 원]</span></p>
+                                            <table class="cont2_table">
+                                                <caption class="indent">수익성 분석</caption>
+                                                <colgroup>
+                                                    <col width="160px">
+                                                    <col width="190px">
+                                                    <col width="160px">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>구분</th>
+                                                        <th>지출금액</th>
+                                                        <th>구성비(%)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr class="foot_space">
+                                                        <th colspan="3"></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>실순이익</th>
+                                                        <th colspan="2" class="sum">23,654,731(37%)</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody class="table1">
+                                                    <tr>
+                                                        <td>식자재</td>
+                                                        <td>12,702,204</td>
+                                                        <td rowspan="2">33%<br><span class="small">(식자재 + 주류)</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>주류</td>
+                                                        <td>8,432,765</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>인건비<br><span class="small">(주방,홀 직원3 &amp; 아르바이트)</span></td>
+                                                        <td>12,000,000</td>
+                                                        <td>19%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>임대료</td>
+                                                        <td>3,500,000</td>
+                                                        <td>5%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>운영경비 & 잡비</td>
+                                                        <td>4,000,000</td>
+                                                        <td>6%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>지출 합계</td>
+                                                        <td>40,634,969</td>
+                                                        <td> </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="table_ex">■ 화정점 매출 상세</p>
+                                            <table class="cont2_table">
+                                                <caption class="indent">매출 상세</caption>
+                                                <colgroup>
+                                                    <col width="110px">
+                                                    <col width="200px">
+                                                    <col width="200px">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>테이블단가</th>
+                                                        <th>월매출</th>
+                                                        <th>일매출</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>50,863</td>
+                                                        <td class="sum">64,289,700</td>
+                                                        <td class="sum">2,142,990</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cont3" style="display:none">
+                    <div class="cont3_wrap">
+                        <table class="cont3_table">
+                            <caption class="indent">수익성 분석</caption>
+                            <colgroup>
+                                <col width="250px">
+                                <col width="220px">
+                                <col width="730px">
+                            </colgroup>
+                            <p class="f_stxt t_left">[25평 기준]</p>
+                            <thead>
+                                <tr>
+                                    <th>구 분</th>
+                                    <th>금 액</th>
+                                    <th>내 용</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr class="foot_space">
+                                    <th colspan="3"></th>
+                                </tr>
+                                <tr>
+                                    <th>합&nbsp;&nbsp;&nbsp;계</th>
+                                    <th class="sum">85,000,000</th>
+                                    <th class="sum"><em>기존매장 설비 재사용 가능</em></th>
+                                </tr>
+                            </tfoot>
+                            <tbody class="table1">
+                                <tr>
+                                    <td>가맹비</td>
+                                    <td>5,000,000</td>
+                                    <td>브랜드사용, 가맹점운영권, 노하우전수, 상권보호</td>
+                                </tr>
+                                <tr>
+                                    <td>교육비</td>
+                                    <td>5,000,000</td>
+                                    <td>메뉴교육, 매장운영교육, 오픈지원</td>
+                                </tr>
+                                <tr>
+                                    <td>인테리어</td>
+                                    <td>42,500,000</td>
+                                    <td>목공, 설비, 전기, 도장, 조명, 방수, 바닥공사, 설계 및 감리 일체, 평당 170만원</td>
+                                </tr>
+                                <tr>
+                                    <td>주방설비&amp;홀집기</td>
+                                    <td>20,000,000</td>
+                                    <td>주방설비 및 홀 기물 일체</td>
+                                </tr>
+                                <tr>
+                                    <td>간판(SIGN)</td>
+                                    <td>6,500,000</td>
+                                    <td>기본 간판, LED전면간판, 실내사인물 (점포에 따라 추가비용 발생)</td>
+                                </tr>
+                                <tr>
+                                    <td>벽화 및 소품</td>
+                                    <td>3,000,000</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>판촉/홍보물</td>
+                                    <td>3,000,000</td>
+                                    <td>
+                                        주방 및 홀 유니폼, 명함, 메뉴북, 사케용조화, 오픈판촉물,<br>
+                                        콜벨, 빌지, 라이터, 스냅백, 각종홍보물
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="table_ex f_stxt">
+                            ※ 별도비용 : 외부파사드공사(폴딩 및 창호 등), 철거, 냉난방, 의탁자<br>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         가스공사, 화장실, 전기증설, 음향공사, 덕트공사, 지방경비, 세척기, 온수기 등
+                        </p>
+                        <div class="cont3_box fs_def">
+                            <div class="box1"><img src="<?=$root?>/img/page/fran/cost_cont3_text.png" alt=""></div>
+                            <div class="box2">
+                                <p>
+                                    <span>계약이행보증금</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3,000,000 또는 보증보험대체가입(가맹계약 종료 시 반환) <br>
+                                    <span>물류이행보증금</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;면제
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //cost end -->
+        <!-- inquery start -->
+        <div class="inquery chapters">
+            <p class="title t_center"><em>가맹문의</em></p>
+            <p class="f_stxt t_center">산카이와 성공창업을 함께하세요.</p>
+<?
+$view3_type = 'list';
+$board = 'inquiry_01';
+$view3_sca = '1n1_01';
+$view3_skin = 'view3_inquiry_00';
+$h2_title_sub = '가맹상담';
+$no_include = true;
+include(BOARD_INC.'/index.php');
+?>
+        </div>
+        <!-- //inquery end -->
+<script src="//player.vimeo.com/api/player.js"></script>
+<script src="<?=$root?>/js/fran.js"></script>
+<script src="<?=$root?>/js/ContentsModal.js?<?=$time?>"></script>
+
+<?php
+include_once('../inc/bottom.php');
+?>
+<?
+@include_once(BOARD_INC.'/view3_popup_01/list.php');
+@include_once(BOARD_INC.'/view3_popup_02/list.php');
+@include_once(BOARD_INC.'/view3_popup_03/list.php');
+@include_once(BOARD_INC.'/view3_popup_04/list.php');
+?>
+<script>
+(function($) {
+    $(document).ready(function() {
+        function popupCallback() {
+            setTimeout(function() {
+                // instofBannerMotion.activate();
+            }, 400);
+        }
+        new Popup('type02', {
+            callback: popupCallback
+        });
+        new Popup('type03', {
+            callback: popupCallback
+        });
+        new Popup('type04', {
+            callback: popupCallback
+        });
+        new ContentsModal('.bindContentsModalOpen', {
+			viewContainer: '#boardWrap',
+			skin: [
+				CONST_REQUEST_ROOT + '/board/view3_modal_map_00/css/view.css'
+			]
+		});
+    });
+}(jQuery));
+</script>

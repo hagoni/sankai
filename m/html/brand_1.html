@@ -1,0 +1,131 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.brand{height:425vw;margin-top:15.625vw;background-image:url('../img/page/brand/01/brand_bg.jpg');font-size:0}
+.layer1{margin-top:-15.625vw}
+.layer1 .text{color:#d2d2d2}
+.layer1 .text.white{padding-bottom:3.4375vw;color:#fff}
+.layer1 .stitle{padding-bottom:2.5vw;color:#fff}
+.layer1 .lyr1_video{}
+.layer1 .lyr1_video .video_wrap{position:relative;top:0;left:0;width:100%;padding-top:56.0344%}
+.layer1 .lyr1_video .video_inner{position:absolute;top:0;left:0;width:100%;height:100%;background-image:url('../img/page/brand/01/lyr1_video.jpg')}
+.layer1 .vtext1{padding:9.375vw 0 3.125vw}
+.layer1 .lyr1_img{padding:4.6875vw 0 5.625vw}
+.layer1 .vtext2{position:relative;padding:26.5625vw 0 22.1875vw}
+.layer1 .vtext2:before{content:'';position:absolute;top:9.375vw;left:50%;width:1px;height:15.625vw;background:rgba(255,255,255,0.3)}
+.layer1 .cmn_link{display:inline-block;width:31.25vw;height:9.375vw;border:1px solid rgba(255,255,255,0.2);font-family:'NotoSansKR-Light';font-size:3.75vw;line-height:9.375vw;color:#b7b7b7;text-align:center}
+.layer1 .lyr1_box{position:relative;width:90.625vw;height:67.1875vw;margin:15.625vw auto;border:1px solid rgba(255,255,255,0.2)}
+.layer1 .lyr1_box:before{content:'';position:absolute;top:calc(-15.625vw - 1px);left:50%;width:1px;height:25vw;background:rgba(255,255,255,0.3)}
+.layer1 .lyr1_box .title{padding:11.25vw 0 2.5vw;color:#fff}
+</style>
+<!-- layer1 start -->
+<!-- //layer1 end -->
+        <div class="brand bg">
+            <span class="brand_jum">.</span>
+            <div class="layer1">
+                <div class="lyr1_video inner">
+                    <div class="video_wrap">
+                        <div class="video_inner bg">
+                            <iframe src="//player.vimeo.com/video/383465734?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <p class="vtext1"><img src="<?=$root?>/img/page/brand/01/lyr1_vtext1.png" alt="독창적인 안주 요리" class="w100"></p>
+                <p class="text t_center">
+                    어디선가 맛보았던 똑같은 음식이 아닌<br>
+                    정통성을 내제한 독창적인 안주 요리를 만듭니다.
+                </p>
+                <p class="lyr1_img"><img src="<?=$root?>/img/page/brand/01/lyr1_img.png" alt="" class="w100"></p>
+                <p class="stitle t_center">까다로운 미각의 당신을 초대합니다</p>
+                <p class="text t_center">
+                    자부심 넘치는 안주 요리와<br>
+                    색다른 풍류를 즐길 수 있는 술집.<br>
+                    이자카야 요리주점(수작요리주점) 산카이입니다.
+                </p>
+                <p class="vtext2"><img src="<?=$root?>/img/page/brand/01/lyr1_vtext2.png" alt="따스하고 은은한 독힙적인 목로 공간" class="w100"></p>
+                <p class="text white t_center">
+                    테이블 파티션을 통해 복잡한 사람들과<br>
+                    분리된 독립적인 공간을 창출합니다.
+                </p>
+                <p class="t_center">
+                    <a href="<?=$root?>/board/index.php?board=interior_01&sca=interior" class="cmn_link">자세히보기</a>
+                </p>
+                <div class="lyr1_box">
+                    <p class="title t_center">
+                        <em>섬세한<br>
+                        디테일의 감동</em>
+                    </p>
+                    <p class="text white t_center">
+                        서너 잔의 술을 나누기에 부족함없는<br>
+                        수준 높은 기본 안주를 제공합니다.
+                    </p>
+                    <p class="t_center">
+                        <a href="<?=$root?>/html/menu_1.html" class="cmn_link">자세히보기</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+<script src="//player.vimeo.com/api/player.js"></script>
+<script>
+(function() {
+   if(typeof Promise !== 'function') return false;
+
+   function setPlayOffset() {
+       for(var i=0; i<$headElems.length; i++) {
+           playOffset[i] = $headElems[i].dataOffset.top - window.innerHeight;
+       }
+   }
+   function scrollHandler() {
+       var scrollTop = win.scrollTop();
+       for(var i=0; i<length; i++) {
+           if(play[i] === false && scrollTop >= playOffset[i] && scrollTop < stopOffset[i]) {
+               player[i].play();
+               play[i] = true;
+           } else if(play[i] === true && (scrollTop < playOffset[i] || scrollTop >= stopOffset[i])) {
+               player[i].pause();
+               play[i] = false;
+           }
+           // player[i].getPaused().then(function(p) {
+           // 	console.log(p);
+           // });
+       }
+   }
+   function resizeHandler() {
+       clearTimeout(resizeTimer);
+       resizeTimer = setTimeout(function() {
+           setPlayOffset();
+           scrollHandler();
+       }, 100);
+   }
+
+   var $headElems = [$('.video_inner > iframe')],
+       player = [],
+       playOffset = [],
+       stopOffset = [],
+       play = [],
+       length = $headElems.length,
+       resizeTimer = null;
+
+   for(var i=0; i<length; i++) {
+       if($headElems[i].length === 0) continue;
+       $headElems[i].dataHeight = parseInt($headElems[i].css('height'), 10);
+       $headElems[i].dataOffset = $headElems[i].offset();
+       stopOffset[i] = $headElems[i].dataOffset.top + $headElems[i].dataHeight;
+       player[i] = new Vimeo.Player($headElems[i][0]);
+       // player[i].on('ended', function() {
+       // 	console.log('end');
+       // });
+       play[i] = false;
+   }
+
+   setPlayOffset();
+
+   win.scroll(scrollHandler);
+   win.resize(resizeHandler);
+   scrollHandler();
+}());
+</script>
+<?php
+include_once('../inc/bottom.php');
+?>

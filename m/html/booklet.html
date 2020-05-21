@@ -1,0 +1,107 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.book_slide{width:100%;overflow:hidden}
+.book_slide .swiper-container{width:78.125vw;overflow:visible}
+.book_slide .sl_inner{width:65.625vw;margin:0 auto}
+.book_slide .book_btns{position:absolute;top:50%;margin-top:-4.6875vw;width:9.375vw;height:9.375vw;background:no-repeat center;background-size:contain;font-size:0}
+.book_slide .book_prev{left:-4.6875vw;background-image:url('../img/page/menu/05/book_prev.png')}
+.book_slide .book_next{right:-4.6875vw;background-image:url('../img/page/menu/05/book_next.png')}
+</style>
+
+        <div class="book">
+            <div class="book_slide">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="/booklet/img/01.jpg" alt="" class="w100">
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="/booklet/img/02.jpg" alt="" class="w100">
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="/booklet/img/03.jpg" alt="" class="w100">
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="/booklet/img/04.jpg" alt="" class="w100">
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="/booklet/img/05.jpg" alt="" class="w100">
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="/booklet/img/06.jpg" alt="" class="w100">
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="/booklet/img/07.jpg" alt="" class="w100">
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="/booklet/img/08.jpg" alt="" class="w100">
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="/booklet/img/09.jpg" alt="" class="w100">
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="/booklet/img/10.jpg" alt="" class="w100">
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="/booklet/img/11.jpg" alt="" class="w100">
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="sl_inner">
+                                <img src="/booklet/img/12.jpg" alt="" class="w100">
+                            </div>
+                        </li>
+                    </ul>
+                    <button type="button" class="book_btns book_prev">이전</button>
+                    <button type="button" class="book_btns book_next">다음</button>
+                </div>
+                <ul class="book_paging cmn_paging fs_def t_center">
+                    <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+                    <li><a href="#none"></a></li>
+                </ul>
+            </div>
+        </div>
+<script>
+$(document).ready(function() {
+    new Swiper('.book_slide > .swiper-container', {
+        navigation: {
+            nextEl: '.book_next',
+            prevEl: '.book_prev',
+        },
+        pagination: {
+        	el: '.book_paging',
+        	type: 'bullets',
+        	clickable: true,
+        	renderBullet: function(index, className){
+        		return '<li class="' + className + '"><a href="#none"></a></li>';
+        	}
+        },
+    });
+});
+</script>
+<?php
+include_once('../inc/bottom.php');
+?>

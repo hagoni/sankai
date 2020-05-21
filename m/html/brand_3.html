@@ -1,0 +1,230 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.layer_int{height:221.875vw}
+.lyri_slide{width:100%;height:100%}
+.lyri_slide .swiper-container{width:100%;height:100%}
+.lyri_slide .bg1{background-image:url('../img/page/brand/03/lyri_bg1.jpg')}
+.lyri_slide .bg2{background-image:url('../img/page/brand/03/lyri_bg1.jpg')}
+.lyri_slide .sl_ttl{padding:21.875vw 0 3.75vw}
+.lyri_slide .swiper-container .text{color:#d2d2d2}
+.lyri_slide .lyri_paging{position:absolute;top:88.75vw;left:0;width:100%}
+.lyri_list{position:absolute;top:107.1875vw;padding:0 4.6875vw}
+.lyri_list li{position:relative;width:81.25vw;margin:0 auto 1.5625vw}
+.lyri_list .list_img{position:relative;width:100%;height:100%}
+.lyri_list .list_img:before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(212,182,108,0.85)}
+.lyri_list .list_txt{position:absolute;top:0;left:0;width:100%;height:100%}
+.lyri_list .stitle{padding:6.25vw 0 1.25vw}
+
+.tabmenu{padding-top:15.625vw}
+.int_slide .swiper-container{width:85.9375vw;overflow:visible}
+.int_slide .swiper-slide{opacity:0.3}
+.int_slide .swiper-slide.swiper-slide-active{opacity:1}
+.int_slide .sl_inner{width:81.25vw;margin:0 auto}
+.int_slide .int_btns{position:absolute;top:50%;margin-top:-11.6875vw;width:9.375vw;height:9.375vw;background:no-repeat center;background-size:cover;font-size:0}
+.int_slide .int_prev{left:-0.9375vw;background-image:url('../img/page/brand/03/int_prev.png')}
+.int_slide .int_next{right:-0.9375vw;background-image:url('../img/page/brand/03/int_next.png')}
+</style>
+
+        <div class="layer_int inner bg">
+            <div class="lyri_slide rel">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide bg1 bg">
+                            <p class="sl_ttl"><img src="<?=$root?>/img/page/brand/03/lyri_sl1.png" alt="이야기를 나누는 은은한 공간" class="w100"></p>
+                            <p class="text t_center">
+                                한 잔의 술과 진솔한 이야기를 나누는<br>
+                                은은한 공간 산카이입니다.<br>
+                                <em>테이블 파티션을 통해 복잡한 사람들과<br>
+                                분리된 독립적인 공간을 창출합니다.</em>
+                            </p>
+                        </li>
+                        <li class="swiper-slide bg2 bg">
+                            <p class="sl_ttl"><img src="<?=$root?>/img/page/brand/03/lyri_sl2.png" alt="이야기를 나누는 은은한 공간" class="w100"></p>
+                            <p class="text t_center">
+                                100년 전통 목로 선술집의<br>
+                                따스한 감성에 현대적 요소를 결합해<br>
+                                산카이만의 세련된 분위기를 만듭니다.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="cmn_paging lyri_paging fs_def t_center">
+                    <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+                    <li><a href="#none"></a></li>
+                </ul>
+                <ul class="lyri_list">
+                    <li>
+                        <div class="list_img">
+                            <img src="<?=$root?>/img/page/brand/03/lyri_list1.jpg" alt="" class="w100">
+                        </div>
+                        <div class="list_txt t_center">
+                            <p class="stitle"><em># 친구끼리</em></p>
+                            <p class="text">
+                                현대적 요소를 결합한 산카이는<br>
+                                SNS에 올릴만한 세련된 분위기를 연출합니다.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="list_img">
+                            <img src="<?=$root?>/img/page/brand/03/lyri_list2.jpg" alt="" class="w100">
+                        </div>
+                        <div class="list_txt t_center">
+                            <p class="stitle"><em># 연인끼리</em></p>
+                            <p class="text">
+                                테이블 파티션이 있어<br>
+                                분위기를 낼 수 있는 은은한 공간입니다.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="list_img">
+                            <img src="<?=$root?>/img/page/brand/03/lyri_list3.jpg" alt="" class="w100">
+                        </div>
+                        <div class="list_txt t_center">
+                            <p class="stitle"><em># 가족끼리</em></p>
+                            <p class="text">
+                                독립적인 공간이 있어 가족과 함께<br>
+                                조용하게 즐길 수 있는 공간입니다.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul class="tabmenu fs_def t_center">
+            <li class="on"><a href="#none">인테리어</a></li>
+            <li><a href="#none">익스테리어</a></li>
+        </ul>
+        <div class="int_slide over_h">
+            <div class="swiper-container rel">
+                <ul class="swiper-wrapper">
+<?
+$int_sql = "select * from ".TABLE_LEFT."interior_01 where view3_use = 1 and view3_sca = 'interior' order by view3_order desc, view3_write_day desc";
+$int_res = mysql_query($int_sql);
+while ($int_lst =  mysql_fetch_assoc($int_res)) {
+    $int_img = explode("||",$int_lst['view3_file']);
+?>
+                    <li class="swiper-slide swiper-slide-active">
+                        <div class="sl_inner">
+                            <img src="<?=$pc?>/upload/interior_01<?=$int_img[2]?>" alt="" class="w100">
+                        </div>
+                    </li>
+<?
+}
+?>
+                    <!-- <li class="swiper-slide swiper-slide-active">
+                        <div class="sl_inner">
+                            <img src="<?=$root?>/img/page/brand/03/int_img1.jpg" alt="" class="w100">
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="sl_inner">
+                            <img src="<?=$root?>/img/page/brand/03/int_img1.jpg" alt="" class="w100">
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="sl_inner">
+                            <img src="<?=$root?>/img/page/brand/03/int_img1.jpg" alt="" class="w100">
+                        </div>
+                    </li> -->
+                </ul>
+                <button type="button" class="int_btns int_prev">이전</button>
+                <button type="button" class="int_btns int_next">다음</button>
+                <ul class="cmn_paging int_paging fs_def t_center">
+                    <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+                    <li><a href="#none"></a></li>
+                </ul>
+            </div>
+            <div class="swiper-container rel" style="display:none">
+                <ul class="swiper-wrapper">
+<?
+$ext_sql = "select * from ".TABLE_LEFT."interior_01 where view3_use = 1 and view3_sca = 'exterior' order by view3_order desc, view3_write_day desc";
+$ext_res = mysql_query($ext_sql);
+while ($ext_lst =  mysql_fetch_assoc($ext_res)) {
+    $ext_img = explode("||",$ext_lst['view3_file']);
+?>
+                    <li class="swiper-slide swiper-slide-active">
+                        <div class="sl_inner">
+                            <img src="<?=$pc?>/upload/interior_01<?=$ext_img[2]?>" alt="" class="w100">
+                        </div>
+                    </li>
+<?
+}
+?>
+                    <!-- <li class="swiper-slide swiper-slide-active">
+                        <div class="sl_inner">
+                            <img src="<?=$root?>/img/page/brand/03/int_img1.jpg" alt="" class="w100">
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="sl_inner">
+                            <img src="<?=$root?>/img/page/brand/03/int_img1.jpg" alt="" class="w100">
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="sl_inner">
+                            <img src="<?=$root?>/img/page/brand/03/int_img1.jpg" alt="" class="w100">
+                        </div>
+                    </li> -->
+                </ul>
+                <button type="button" class="int_btns int_prev">이전</button>
+                <button type="button" class="int_btns int_next">다음</button>
+                <ul class="cmn_paging int_paging fs_def t_center">
+                    <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+                    <li><a href="#none"></a></li>
+                </ul>
+            </div>
+
+        </div>
+<script>
+    (function($) {
+        doc.ready(function() {
+            new Swiper('.lyri_slide .swiper-container', {
+    			speed: 500,
+    			autoplay: {
+    				delay: 5000,
+    			},
+    			effect: 'fade',
+    			fadeEffect: {
+    				crossFade: true
+    			},
+                pagination: {
+                    el: '.lyri_paging',
+                    type: 'bullets',
+                    clickable: true,
+                    renderBullet: function(index, className){
+                    		return '<li class="' + className + '"><a href="#none"></a></li>';
+                    }
+                },
+    		});
+            new Swiper('.int_slide .swiper-container', {
+    			speed: 500,
+    			autoplay: {
+    				delay: 5000,
+    			},
+                navigation: {
+                    nextEl: '.int_next',
+                    prevEl: '.int_prev',
+                },
+                pagination: {
+                    el: '.int_paging',
+                    type: 'bullets',
+                    clickable: true,
+                    renderBullet: function(index, className){
+                    		return '<li class="' + className + '"><a href="#none"></a></li>';
+                    }
+                },
+                observer:true,
+                observeParents:true
+    		});
+
+            new Tabbing($('.tabmenu'),$('.int_slide'));
+        }());
+    }(jQuery));
+</script>
+<?php
+include_once('../inc/bottom.php');
+?>

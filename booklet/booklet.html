@@ -1,0 +1,156 @@
+<?
+######################################################################################################################################################
+//VIEW3 BOARD 1.0
+######################################################################################################################################################
+define('_VIEW3BOARD_', TRUE);
+@include_once														"../view3.php";
+######################################################################################################################################################
+$path = $_POST['path'];
+$w = $_POST['w'];
+$h = $_POST['h'];
+?>
+
+<div id="bookletTotalHtml">
+
+<style type="text/css">
+/* booklet */
+#bookletContainer{position:absolute;left:50%;top:0;z-index:1100;width:<?=$w?>px;height:<?=$h + 50?>px;margin-left:-<?=$w / 2?>px}
+#bookletWrap{position:relative;width:100%;height:<?=$h?>px;padding-top:64px}
+#flipbook{position:relative;width:100%;height:100%;margin:0 auto}
+#pageWrap{width:100%;height:100%}
+#bookletX{position:absolute;right:0;top:0;width:64px;height:64px;background:url('<?=$path?>/img/btn_x.png') no-repeat;text-indent:-10000px}
+
+/*
+ * jQuery Booklet Plugin
+ * Copyright (c) 2010 - 2014 William Grauvogel (http://builtbywill.com/)
+ *
+ * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php)
+ *
+ * Version : 1.4.4
+ *
+ * Originally based on the work of:
+ *	1) Charles Mangin (http://clickheredammit.com/pageflip/)
+ */
+	.booklet         {width:800px; height:600px; position:relative; margin:0 auto; overflow:visible !important;}
+	.booklet .b-page {left:0; top:0; position:absolute; overflow:hidden; padding:0; outline:1px solid rgba(0,0,0,0);}
+
+	.booklet .b-pN  {}
+	.booklet .b-p0  {}
+	.booklet .b-p1  {}
+	.booklet .b-p2  {}
+	.booklet .b-p3  {}
+	.booklet .b-p4  {}
+
+   	/* Page Wrappers */
+	.booklet .b-wrap       {top:0; position:absolute;}
+	.booklet .b-wrap-left  {background:#fff;}
+	.booklet .b-wrap-right {background:#efefef;}
+
+	.booklet .b-pN .b-wrap,
+	.booklet .b-p1 .b-wrap,
+	.booklet .b-p2 .b-wrap,
+	.booklet .b-p3 .b-wrap,
+	.booklet .b-p4 .b-wrap  {left:0;}
+	.booklet .b-p0 .b-wrap  {right:0;}
+
+   	/* Custom Page Types */
+	.booklet .b-page-blank  {padding:0; width:100%; height:100%;}
+	.booklet .b-page-cover  {padding:0; width:100%; height:100%; background:#925C0E;}
+	.booklet .b-page-cover h3  {color:#fff; text-shadow:0 1px 3px #222;}
+
+   	/* Page Numbers */
+	.booklet .b-counter {bottom:10px; position:absolute; display:block; width:25px; height:20px; text-align:center; font-weight:700; font-size:16px; font-family:Georgia, "Times New Roman", Times, serif; color:#fff; text-shadow:1px 1px 1px #fff}
+	.booklet .b-wrap-left  .b-counter  {left:10px;}
+	.booklet .b-wrap-right .b-counter {right:10px;}
+
+   	/* Page Shadows
+	.booklet .b-shadow-f  {right:0; top:0; position:absolute; opacity:0; background-image:url("images/shadow-top-forward.png"); background-repeat:repeat-y; background-position:100% 0;}
+	.booklet .b-shadow-b  {left:0;  top:0; position:absolute; opacity:0; background-image:url("images/shadow-top-back.png");    background-repeat:repeat-y; background-position:0 0;}
+
+	.booklet .b-p0 {background-image:url("images/shadow.png"); background-repeat:repeat-y; background-position:100% 10px;}
+	.booklet .b-p3 {background-image:url("images/shadow.png"); background-repeat:repeat-y; background-position:0 10px;}
+	*/
+
+   	/* Overlay Controls
+	.booklet .b-grab     {cursor: url("images/openhand.cur"), default;}
+	.booklet .b-grabbing {cursor: url("images/closedhand.cur"), default;}
+	 */
+
+   	/* Overlay Controls */
+	.booklet .b-overlay      {top:0; position:absolute; height:100%; width:50%;}
+	.booklet .b-overlay-prev {left:0;}
+	.booklet .b-overlay-next {right:0;}
+
+   	/* Tab Controls */
+	.booklet .b-tab        {background:#000; height:40px; width:100%; padding:10px 0 0; text-align:center; color:#ccc; position:absolute; font-size:11px;}
+	.booklet .b-tab-prev   {left:0;}
+	.booklet .b-tab-next   {right:0;}
+	.booklet .b-tab:hover  {background:#aaa; color:#000;}
+
+   	/* Arrow Controls */
+	.booklet .b-arrow          {display:block;position:absolute;top:50%;width:50px;height:50px;margin-top:-25px;text-indent:-10000px}
+	.booklet .b-arrow div      {display:none;width:100%;height:100%;background-repeat:no-repeat;background-position:0 0}
+	.booklet .b-arrow-prev     {left:-70px}
+	.booklet .b-arrow-next     {right:-70px}
+	.booklet .b-arrow-prev div {background-image:url('<?=$path?>/img/btn_prev.png')}
+	.booklet .b-arrow-next div {background-image:url('<?=$path?>/img/btn_next.png')}
+
+/* @z-index fix (needed for older IE browsers)
+----------------------------------------*/
+
+    body              {z-index:0;}
+    .b-menu           {z-index:100;}
+    .b-selector       {z-index:100;}
+    .booklet          {z-index:10;}
+    .b-pN             {z-index:10;}
+    .b-p0             {z-index:30;}
+    .b-p1             {z-index:20;}
+    .b-p2             {z-index:20;}
+    .b-p3             {z-index:30;}
+    .b-p4             {z-index:10;}
+    .b-prev           {z-index:40;}
+    .b-next           {z-index:40;}
+    .b-counter        {z-index:40;}
+
+/* @Menu Items
+----------------------------------------*/
+	.b-menu {height:40px; padding:0 0 10px;}
+
+	.b-selector             {height:40px; position:relative; float:right; border:none; color:#cecece; cursor:pointer; font:normal 12px "Myriad Pro", Myriad, "DejaVu Sans Condensed","Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;}
+	.b-selector .b-current  {padding:8px 15px 12px; line-height:20px; min-width:18px; height:20px; display:block; background:#000; text-align:center;}
+	.b-selector-page        {width:auto; margin-left:15px;}
+	.b-selector-chapter     {width:auto;}
+
+	.b-selector:hover            {color:#fff; background-position:left 0;}
+	.b-selector:hover .b-current {background-position:right 0;}
+	.b-selector ul               {overflow:hidden; margin:0; list-style:none !important; position:absolute; top:40px; right:0; padding:0 0 10px; background:#000; width:240px;}
+	.b-selector li               {border:none;}
+	.b-selector a                {color:#cecece; height:14px; text-decoration:none; display:block; padding:5px 10px;}
+	.b-selector a .b-text        {float:left; clear:none;}
+	.b-selector a .b-num         {float:right; clear:none;}
+	.b-selector a:hover          {color:#fff;}
+</style>
+
+<div id="bookletContainer">
+	<div id="bookletWrap">
+		<div id="flipbook">
+			<div id="pageWrap">
+				<div class="pages"><img src="<?=$path?>/img/01.jpg" alt="" /></div>
+				<div class="pages"><img src="<?=$path?>/img/02.jpg" alt="" /></div>
+				<div class="pages"><img src="<?=$path?>/img/03.jpg" alt="" /></div>
+				<div class="pages"><img src="<?=$path?>/img/04.jpg" alt="" /></div>
+				<div class="pages"><img src="<?=$path?>/img/05.jpg" alt="" /></div>
+				<div class="pages"><img src="<?=$path?>/img/06.jpg" alt="" /></div>
+				<div class="pages"><img src="<?=$path?>/img/07.jpg" alt="" /></div>
+				<div class="pages"><img src="<?=$path?>/img/08.jpg" alt="" /></div>
+				<div class="pages"><img src="<?=$path?>/img/09.jpg" alt="" /></div>
+				<div class="pages"><img src="<?=$path?>/img/10.jpg" alt="" /></div>
+				<div class="pages"><img src="<?=$path?>/img/11.jpg" alt="" /></div>
+				<div class="pages"><img src="<?=$path?>/img/12.jpg" alt="" /></div>
+			</div>
+		</div>
+		<button type="button" id="bookletX">메뉴북 닫기</button>
+	</div>
+</div>
+
+</div>

@@ -1,0 +1,64 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.location{padding-bottom:100px}
+
+.map_area{max-width:1800px;height:680px;margin:0 auto;background-color:#777}
+.loc_cont{height:380px;margin-top:-100px;background:url('../img/page/com/05/loc_bg.jpg')no-repeat center;box-sizing:border-box}
+.loc_cont .loc_ci{left:215px;top:115px}
+.loc_cont ul{padding-left:560px;padding-top:90px}
+.loc_cont ul li{overflow:hidden}
+.loc_cont ul li:first-child{margin-bottom:22px}
+.loc_cont ul li:nth-child(2){margin-bottom:40px}
+.loc_cont .ttl{float:left;width:135px;font-family:'Arita-buriSB';font-size:30px;color:#fff}
+.loc_cont .text{float:left;color:#b9b9b9}
+</style>
+        <!-- location start -->
+        <div class="location">
+            <div class="map_area" id="map_area"></div>
+            <div class="loc_cont inner rel">
+                <div class="loc_ci abs"><img src="<?=$root?>/img/page/com/05/loc_ci.png" alt="SND CPR"></div>
+                <ul>
+                    <li>
+                        <p class="ttl">주소</p>
+                        <p class="text">경기 고양 일산서구 킨텍스로 240<br>오피스동 1205호, 1206호(대화동, 킨텍스꿈에그린)</p>
+                    </li>
+                    <li>
+                        <p class="ttl">대표번호</p>
+                        <p class="text">1800-9873</p>
+                    </li>
+                    <li>
+                        <p class="ttl">이메일</p>
+                        <p class="text">sndcpr@naver.com</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+<?
+$markerImgPath = '/new/design/other/marker.png';
+$markerImgSize = getImagesize(ROOT_INC.$markerImgPath);
+?>
+
+<script src="http://maps.googleapis.com/maps/api/js?language=ko&amp;region=kr&amp;libraries=geometry<?if($settings_data['google_api_key']){echo '&key='.$settings_data['google_api_key'];}?>"></script>
+<script>
+$(document).ready(function() {
+    (function() {
+        var map = new google.maps.Map(document.getElementById('map_area'), {
+            center: new google.maps.LatLng(+'37.665857839885206', +'126.75109929141911'),
+            zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+        });
+
+        var marker = new google.maps.Marker({
+            map: map,
+			position: {lat: +'37.665857839885206', lng: +'126.75109929141911'},
+			//title: '',
+            icon: '<?=$markerImgPath?>'
+		});
+    }());
+});
+</script>
+<?php
+include_once('../inc/bottom.php');
+?>

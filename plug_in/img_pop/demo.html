@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Syaku lightbox Example Page</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-syaku.lightbox.js"></script>
+    <link rel="stylesheet" type="text/css" charset="UTF-8" href="jquery-syaku.lightbox.css" />
+    <script type="text/javascript">
+      jQuery(function() {
+        jQuery("a[rel=lightbox]").slightbox();
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <a href="./demo/1.jpg" rel="lightbox"><img src="./demo/1.jpg" width="150" /></a>
+      <a href="./demo/4.jpg" rel="lightbox"><img src="./demo/4.jpg" width="150" /></a>
+      <a href="./demo/2.jpg" rel="lightbox"><img src="./demo/3.jpg" width="150" /></a>
+    </div>
+  </body>
+</html>
